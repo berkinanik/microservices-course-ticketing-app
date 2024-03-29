@@ -1,5 +1,6 @@
-export { RequestValidationError } from './request-validation-error';
-export { DatabaseConnectionError } from './database-connection-error';
-export { UnknownError } from './unknown-error';
-export { CustomError } from './custom-error';
-export { NotFoundError } from './not-found-error';
+export * from './request-validation-error';
+export * from './database-connection-error';
+export * from './unknown-error';
+export * from './custom-error';
+export * from './not-found-error';
+export * from './bad-request-error';

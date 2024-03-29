@@ -2,7 +2,7 @@ import { ErrorRequestHandler } from 'express';
 
 import { CustomError, UnknownError } from '../errors';
 
-export const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
+export const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
   let error: CustomError;
 
   if (err instanceof CustomError) {

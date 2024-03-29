@@ -1,14 +1,13 @@
 import { CommonErrorResponse } from './@types';
 import { CustomError } from './custom-error';
 
-export class DatabaseConnectionError extends CustomError {
-  statusCode = 503;
+export class BadRequestError extends CustomError {
+  statusCode: number = 400;
 
-  constructor() {
-    super('Error connecting to database');
+  constructor(public message: string) {
+    super(message);
 
-    // Extending a built-in class
-    Object.setPrototypeOf(this, DatabaseConnectionError.prototype);
+    Object.setPrototypeOf(this, BadRequestError.prototype);
   }
 
   serializeErrors(): CommonErrorResponse {
