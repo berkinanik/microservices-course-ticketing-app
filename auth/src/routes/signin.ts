@@ -1,29 +1,45 @@
 import express from 'express';
-import { body, validationResult } from 'express-validator';
+import { body } from 'express-validator';
+import jwt from 'jsonwebtoken';
 
-import { RequestValidationError } from '../errors';
+import { User } from '../models';
+import { Password } from '../services';
+import { validateRequest } from '../middlewares';
+import { BadRequestError } from '../errors';
 
 const router = express.Router();
 
 router.post(
   '/api/users/signin',
   body('email').trim().isEmail().withMessage('Email must be valid'),
-  body('password')
-    .trim()
-    .isLength({ min: 4, max: 20 })
-    .withMessage('Password must be between 4 and 20 characters'),
-  (req, res) => {
-    const errors = validationResult(req);
-
-    if (!errors.isEmpty()) {
-      // TODO throw an error
-      throw new RequestValidationError(errors.array());
-    }
-
+  body('password').trim().notEmpty().withMessage('Password must be between 4 and 20 characters'),
+  validateRequest,
+  async (req, res) => {
     const { email, password } = req.body as { email: string; password: string };
 
-    // TODO: Create a new user in the database
-    console.log('Creating a user:', email);
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      throw new BadRequestError('Invalid credentials');
+    }
+
+    const passwordsMatch = await Password.compare(user.password, password);
+
+    if (!passwordsMatch) {
+      throw new BadRequestError('Invalid credentials');
+    }
+
+    const userJwt = jwt.sign(
+      {
+        id: user.id,
+        email: user.email,
+      },
+      process.env.JWT_KEY!,
+    );
+
+    req.session = {
+      jwt: userJwt,
+    };
 
     return res.send({});
   },
