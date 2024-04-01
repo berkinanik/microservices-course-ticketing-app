@@ -10,14 +10,14 @@ router.get('/api/users/current-user', (req, res) => {
       id: string;
     };
 
-    res.send({
+    return res.send({
       currentUser: {
         email,
         id,
       },
     });
   } catch (err) {
-    res.send({
+    return res.send({
       currentUser: null,
     });
   }
