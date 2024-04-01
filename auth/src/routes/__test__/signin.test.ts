@@ -1,6 +1,7 @@
 import request from 'supertest';
 import { app } from '../../app';
 import supertest from 'supertest';
+import { signout, signup } from '../../test/utils';
 
 describe('signin', () => {
   const apiRoute = '/api/users/signin';
@@ -8,19 +9,13 @@ describe('signin', () => {
   const requestAgent = supertest.agent(app);
 
   beforeEach(async () => {
-    const response = await requestAgent
-      .post('/api/users/signup')
-      .send({
-        email: 'user@test.com',
-        password: 'password',
-      })
-      .expect(201);
+    await signup(requestAgent);
 
-    await requestAgent.post('/api/users/signout').send().expect(200);
+    await signout(requestAgent, 200);
   });
 
   afterEach(async () => {
-    await requestAgent.post('/api/users/signout').send();
+    await signout(requestAgent);
   });
 
   it('returns a 200 on successful signin', async () => {

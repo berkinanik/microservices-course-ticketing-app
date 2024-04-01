@@ -1,5 +1,6 @@
 import request from 'supertest';
 import { app } from '../../app';
+import { signup } from '../../test/utils';
 
 describe('signout', () => {
   const apiRoute = '/api/users/signout';
@@ -7,13 +8,7 @@ describe('signout', () => {
   const requestAgent = request.agent(app);
 
   it('returns a 200 and removes cookie', async () => {
-    await requestAgent
-      .post('/api/users/signup')
-      .send({
-        email: 'user@test.com',
-        password: 'password',
-      })
-      .expect(201);
+    await signup(requestAgent);
 
     const response = await requestAgent.post(apiRoute).send().expect(200);
 
