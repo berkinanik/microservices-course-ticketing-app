@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import cookieSession from 'cookie-session';
 
 import { currentUserRouter, signInRouter, signOutRouter, signUpRouter } from './routes';
-import { errorHandlerMiddleware } from './middlewares';
+import { errorHandlerMiddleware, currentUserMiddleware } from './middlewares';
 import { NotFoundError } from './errors';
 
 const app = express();
@@ -17,6 +17,8 @@ app.use(
     secure: true,
   }),
 );
+
+app.use(currentUserMiddleware);
 
 app.use(currentUserRouter);
 app.use(signInRouter);
