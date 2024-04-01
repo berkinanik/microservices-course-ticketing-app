@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import cookieSession from 'cookie-session';
 
 import { currentUserRouter, signInRouter, signOutRouter, signUpRouter } from './routes';
-import { errorHandler } from './middlewares';
+import { errorHandlerMiddleware } from './middlewares';
 import { NotFoundError } from './errors';
 
 const app = express();
@@ -26,7 +26,7 @@ app.use(signUpRouter);
 app.all('*', () => {
   throw new NotFoundError();
 });
-app.use(errorHandler);
+app.use(errorHandlerMiddleware);
 
 const start = async () => {
   if (!process.env.JWT_KEY) {
