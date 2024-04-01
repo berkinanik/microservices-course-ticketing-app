@@ -19,8 +19,8 @@ describe('signin', () => {
     await requestAgent.post('/api/users/signout').send().expect(200);
   });
 
-  afterEach(() => {
-    requestAgent.post('/api/users/signout').send();
+  afterEach(async () => {
+    await requestAgent.post('/api/users/signout').send();
   });
 
   it('returns a 200 on successful signin', async () => {
