@@ -1,4 +1,4 @@
-import { Password } from './password';
+import { Password } from '../password';
 
 describe('Password service', () => {
   const password = 'my-password';
