@@ -1,20 +1,30 @@
 import request from 'supertest';
 import { app } from '../../app';
+import supertest from 'supertest';
 
 describe('signin', () => {
   const apiRoute = '/api/users/signin';
 
-  beforeEach(async () => {
-    await request(app).post('/api/users/signup').send({
-      email: 'user@test.com',
-      password: 'password',
-    });
+  const requestAgent = supertest.agent(app);
 
-    await request(app).post('/api/users/signout').send();
+  beforeEach(async () => {
+    const response = await requestAgent
+      .post('/api/users/signup')
+      .send({
+        email: 'user@test.com',
+        password: 'password',
+      })
+      .expect(201);
+
+    await requestAgent.post('/api/users/signout').send().expect(200);
+  });
+
+  afterEach(() => {
+    requestAgent.post('/api/users/signout').send();
   });
 
   it('returns a 200 on successful signin', async () => {
-    return request(app)
+    return requestAgent
       .post(apiRoute)
       .send({
         email: 'user@test.com',
@@ -24,7 +34,7 @@ describe('signin', () => {
   });
 
   it('fails when an incorrect password is supplied', async () => {
-    return request(app)
+    return requestAgent
       .post(apiRoute)
       .send({
         email: 'user@test.com',
@@ -34,7 +44,7 @@ describe('signin', () => {
   });
 
   it('returns a 400 with an invalid email and/or password', async () => {
-    await request(app)
+    await requestAgent
       .post(apiRoute)
       .send({
         email: 'user@test',
@@ -42,7 +52,7 @@ describe('signin', () => {
       })
       .expect(400);
 
-    await request(app)
+    await requestAgent
       .post(apiRoute)
       .send({
         email: 'user@test.com',
@@ -50,7 +60,7 @@ describe('signin', () => {
       })
       .expect(400);
 
-    await request(app)
+    await requestAgent
       .post(apiRoute)
       .send({
         email: '',
@@ -58,11 +68,11 @@ describe('signin', () => {
       })
       .expect(400);
 
-    return request(app).post(apiRoute).send().expect(400);
+    return requestAgent.post(apiRoute).send().expect(400);
   });
 
   it('sets a cookie after successful signin', async () => {
-    const response = await request(app)
+    const response = await requestAgent
       .post(apiRoute)
       .send({
         email: 'user@test.com',
