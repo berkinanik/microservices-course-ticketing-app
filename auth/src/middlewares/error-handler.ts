@@ -5,8 +5,6 @@ import { CustomError, UnknownError } from '../errors';
 export const errorHandlerMiddleware: ErrorRequestHandler = (err, _req, res, _next) => {
   let error: CustomError;
 
-  console.log(err);
-
   if (err instanceof CustomError) {
     error = err;
   } else {
