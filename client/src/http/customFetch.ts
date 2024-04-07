@@ -10,11 +10,13 @@ type CommonSuccessResponse<T> = {
   status: number;
   ok: true;
   data: T;
+  errors?: never;
 };
 
 type CommonErrorResponse = {
   status: number;
   ok: false;
+  data?: never;
   errors: {
     message: string;
     field?: string;
