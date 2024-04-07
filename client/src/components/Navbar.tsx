@@ -1,6 +1,10 @@
 import Link from 'next/link';
 
-export const Navbar = () => {
+interface Props {
+  currentUser: { id: string; email: string } | null;
+}
+
+export const Navbar: React.FC<Props> = ({ currentUser }) => {
   return (
     <nav className="w-full bg-cyan-700">
       <div className="mx-auto flex max-w-[1200px] flex-row justify-between p-4">
@@ -8,7 +12,7 @@ export const Navbar = () => {
           <Link href="/">Home</Link>
         </div>
 
-        <div>Sign Out</div>
+        {currentUser ? <div>Sign Out</div> : null}
       </div>
     </nav>
   );
