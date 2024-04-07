@@ -2,10 +2,16 @@
 
 import { type FormEvent } from 'react';
 
+import { useRouter } from 'next/navigation';
+
+import { toast } from 'sonner';
+
 import { Button } from '~/components';
 import { customFetch } from '~/http';
 
 export const SignUpForm = () => {
+  const router = useRouter();
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -14,14 +20,18 @@ export const SignUpForm = () => {
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
 
-    const response = await customFetch('/api/users/signup', 'POST', {
+    await customFetch('/api/users/signup', 'POST', {
       email,
       password,
     }).then((res) => {
       if (res.ok) {
-        console.log('success:', res.data);
+        toast.dismiss();
+        toast.success('Account created successfully!');
+        router.push('/');
       } else {
-        console.log('errors:', res.errors);
+        for (const error of res.errors) {
+          toast.error(`${error.field ? `${error.field}: ` : ''}${error.message}`);
+        }
       }
     });
   };
