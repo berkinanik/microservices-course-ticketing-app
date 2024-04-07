@@ -20,9 +20,12 @@ export const SignUpForm = () => {
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
 
-    await customFetch('/api/users/signup', 'POST', {
-      email,
-      password,
+    await customFetch('/api/users/signup', {
+      method: 'POST',
+      body: {
+        email,
+        password,
+      },
     }).then((res) => {
       if (res.ok) {
         toast.dismiss();
@@ -30,7 +33,7 @@ export const SignUpForm = () => {
         router.push('/');
       } else {
         for (const error of res.errors) {
-          toast.error(`${error.field ? `${error.field}: ` : ''}${error.message}`);
+          toast.error(`${error.field ? `Error in ${error.field}:<br />` : ''}${error.message}`);
         }
       }
     });
