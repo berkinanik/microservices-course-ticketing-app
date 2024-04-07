@@ -35,15 +35,25 @@ export const customFetch = async <T = unknown>(
     })
     .catch(async (err) => {
       if (err instanceof NotOKResponse) {
+        const responseBody = await err.res
+          .json()
+          .then(
+            (data) =>
+              data as {
+                errors: {
+                  message: string;
+                  field?: string;
+                }[];
+              },
+          )
+          .catch(() => ({
+            errors: [{ message: err.res.statusText }],
+          }));
+
         return Promise.resolve({
           status: err.res.status,
           ok: false,
-          ...((await err.res.json()) as {
-            errors: {
-              message: string;
-              field?: string;
-            }[];
-          }),
+          ...responseBody,
         });
       }
 
