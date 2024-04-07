@@ -1,3 +1,5 @@
+import { type CommonResponse, type CustomFetchOptions } from './types';
+
 class NotOKResponse extends Error {
   constructor(public res: Response) {
     super();
@@ -6,36 +8,19 @@ class NotOKResponse extends Error {
   }
 }
 
-type CommonSuccessResponse<T> = {
-  status: number;
-  ok: true;
-  data: T;
-  errors?: never;
-};
-
-type CommonErrorResponse = {
-  status: number;
-  ok: false;
-  data?: never;
-  errors: {
-    message: string;
-    field?: string;
-  }[];
-};
-
-type CommonResponse<T> = CommonSuccessResponse<T> | CommonErrorResponse;
-
 export const customFetch = async <T = unknown>(
   url: string,
-  method: 'GET' | 'POST' | 'PUT' | 'DELETE' = 'GET',
-  body?: Record<string, unknown>,
+  options: CustomFetchOptions = {
+    method: 'GET',
+  },
 ): Promise<CommonResponse<T>> => {
+  const requestHeaders = new Headers(options.headers);
+  requestHeaders.set('Content-Type', 'application/json');
+
   const response = await fetch(url, {
-    method,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
+    ...options,
+    headers: requestHeaders,
+    body: options.body ? JSON.stringify(options.body) : undefined,
   })
     .then(async (res) => {
       if (res.ok) {
