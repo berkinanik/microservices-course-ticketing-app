@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import { Toaster } from 'sonner';
 
 import './globals.css';
+import { Navbar } from '~/components';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Navbar />
         <main className="mx-auto max-w-[1200px] px-6 py-8">{children}</main>
         <Toaster visibleToasts={5} pauseWhenPageIsHidden />
       </body>
