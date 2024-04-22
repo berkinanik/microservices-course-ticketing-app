@@ -1,7 +1,5 @@
 'use client';
 
-import { type FormEvent } from 'react';
-
 import { useRouter } from 'next/navigation';
 
 import { toast } from 'sonner';
@@ -9,11 +7,15 @@ import { toast } from 'sonner';
 import { Button } from '~/components';
 import { buildClient } from '~/http';
 
-export const SignUpForm = () => {
+interface Props {
+  action: 'signup' | 'signin';
+}
+
+export const AuthForm: React.FC<Props> = ({ action }) => {
   const router = useRouter();
   const client = buildClient();
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
@@ -27,14 +29,16 @@ export const SignUpForm = () => {
           id: string;
           email: string;
         };
-      }>('/api/users/signup', {
+      }>(`/api/users/${action}`, {
         email,
         password,
       })
       .then((res) => {
         if (res.ok) {
           toast.dismiss();
-          toast.success('Account created successfully!');
+          toast.success(
+            action === 'signup' ? 'Account created successfully!' : 'Signed in successfully!',
+          );
           router.push('/');
           router.refresh();
         } else {
@@ -48,7 +52,7 @@ export const SignUpForm = () => {
 
   return (
     <form className="flex flex-col items-start gap-4" onSubmit={handleSubmit}>
-      <h1 className="text-xl font-medium">Sign Up</h1>
+      <h1 className="text-xl font-medium">{action === 'signin' ? 'Sign In' : 'Sign Up'}</h1>
       <span className="h-[1px] w-full bg-black" />
       <div className="flex w-[320px] flex-col gap-2">
         <label htmlFor="email" className="text-sm font-light">
@@ -76,7 +80,7 @@ export const SignUpForm = () => {
           required
         />
       </div>
-      <Button type="submit">Sign Up</Button>
+      <Button type="submit">{action === 'signin' ? 'Sign In' : 'Sign Up'}</Button>
     </form>
   );
 };

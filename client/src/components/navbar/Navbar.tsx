@@ -1,7 +1,11 @@
 import Link from 'next/link';
 
+import { AuthButtons } from './AuthButtons';
+
+import { type CurrentUser } from '~/@types';
+
 interface Props {
-  currentUser: { id: string; email: string } | null;
+  currentUser: CurrentUser;
 }
 
 export const Navbar: React.FC<Props> = ({ currentUser }) => {
@@ -12,7 +16,7 @@ export const Navbar: React.FC<Props> = ({ currentUser }) => {
           <Link href="/">Home</Link>
         </div>
 
-        {currentUser ? <div>Sign Out</div> : null}
+        <AuthButtons currentUser={currentUser} />
       </div>
     </nav>
   );
