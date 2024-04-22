@@ -1,3 +1,5 @@
+import { type AxiosRequestConfig } from 'axios';
+
 type CommonSuccessResponse<T> = {
   status: number;
   ok: true;
@@ -17,7 +19,8 @@ type CommonErrorResponse = {
 
 export type CommonResponse<T> = CommonSuccessResponse<T> | CommonErrorResponse;
 
-export type CustomFetchOptions = Omit<RequestInit, 'method' | 'body'> & {
-  method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
-  body?: Record<string, unknown>;
-};
+export type RequestHandler = <T = unknown, D = unknown>(
+  url: string,
+  data?: D,
+  config?: AxiosRequestConfig<D>,
+) => Promise<CommonResponse<T>>;

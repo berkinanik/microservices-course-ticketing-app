@@ -7,10 +7,11 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 
 import { Button } from '~/components';
-import { customFetch } from '~/http';
+import { buildClient } from '~/http';
 
 export const SignUpForm = () => {
   const router = useRouter();
+  const client = buildClient();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,23 +21,29 @@ export const SignUpForm = () => {
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
 
-    await customFetch('/api/users/signup', {
-      method: 'POST',
-      body: {
+    await client
+      .post<{
+        user: {
+          id: string;
+          email: string;
+        };
+      }>('/api/users/signup', {
         email,
         password,
-      },
-    }).then((res) => {
-      if (res.ok) {
-        toast.dismiss();
-        toast.success('Account created successfully!');
-        router.push('/');
-      } else {
-        for (const error of res.errors) {
-          toast.error(`${error.field ? `Error in ${error.field}:<br />` : ''}${error.message}`);
+      })
+      .then((res) => {
+        if (res.ok) {
+          toast.dismiss();
+          toast.success('Account created successfully!');
+          router.push('/');
+          router.refresh();
+        } else {
+          for (const error of res.errors) {
+            toast.dismiss();
+            toast.error(`${error.field ? `Error in ${error.field}:<br />` : ''}${error.message}`);
+          }
         }
-      }
-    });
+      });
   };
 
   return (

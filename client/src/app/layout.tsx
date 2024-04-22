@@ -5,7 +5,7 @@ import { headers } from 'next/headers';
 import { Toaster } from 'sonner';
 
 import { Navbar } from '~/components';
-import { customFetchServer } from '~/http';
+import { buildClientServer } from '~/http';
 
 import './globals.css';
 
@@ -21,14 +21,17 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const response = await customFetchServer<{
-    currentUser: { id: string; email: string } | null;
-  }>('http://auth-srv:3000/api/users/current-user', headers).catch(() => ({ data: null }));
+  const client = buildClientServer(headers);
+  const currentUser = await client
+    .get<{
+      currentUser: { id: string; email: string } | null;
+    }>('/api/users/current-user')
+    .then((res) => (res.ok ? res.data.currentUser : null));
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar currentUser={response.data?.currentUser ?? null} />
+        <Navbar currentUser={currentUser} />
         <main className="mx-auto max-w-[1200px] px-6 py-8">{children}</main>
         <Toaster visibleToasts={5} pauseWhenPageIsHidden />
       </body>
