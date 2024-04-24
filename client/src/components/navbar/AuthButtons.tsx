@@ -20,6 +20,7 @@ export const AuthButtons: React.FC<Props> = ({ currentUser }) => {
     await client
       .post('/api/users/signout')
       .then(() => {
+        toast.success('Signed out successfully!');
         router.push('/');
         router.refresh();
       })
