@@ -16,7 +16,7 @@ export const AuthButtons: React.FC<Props> = ({ currentUser }) => {
   const client = buildClient();
   const router = useRouter();
 
-  const handleLogout = async () => {
+  const handleSignout = async () => {
     await client
       .post('/api/users/signout')
       .then(() => {
@@ -33,7 +33,7 @@ export const AuthButtons: React.FC<Props> = ({ currentUser }) => {
       {currentUser ? (
         <>
           <li>
-            <button onClick={handleLogout}>Logout</button>
+            <button onClick={handleSignout}>Sign out</button>
           </li>
         </>
       ) : (
