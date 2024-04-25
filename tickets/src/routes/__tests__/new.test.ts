@@ -7,6 +7,12 @@ describe('new', () => {
 
   const requestAgent = request.agent(app);
 
+  let cookie: string[];
+
+  beforeAll(() => {
+    cookie = getCookieHeader();
+  });
+
   it('should have a route handler listening to /api/tickets for post requests', async () => {
     return requestAgent
       .post(apiRoute)
@@ -21,8 +27,6 @@ describe('new', () => {
   });
 
   it('should return a status other than 401 if the user is signed in', async () => {
-    const cookie = getCookieHeader();
-
     return requestAgent
       .post(apiRoute)
       .set('Cookie', cookie)
@@ -32,9 +36,43 @@ describe('new', () => {
       });
   });
 
-  it('should return an error if an invalid title is provided', async () => {});
+  it('should return an error if an invalid title is provided', async () => {
+    await requestAgent
+      .post(apiRoute)
+      .set('Cookie', cookie)
+      .send({
+        title: '',
+        price: 30,
+      })
+      .expect(400);
 
-  it('should return an error if an invalid price is provided', async () => {});
+    await requestAgent
+      .post(apiRoute)
+      .set('Cookie', cookie)
+      .send({
+        price: 30,
+      })
+      .expect(400);
+  });
+
+  it('should return an error if an invalid price is provided', async () => {
+    await requestAgent
+      .post(apiRoute)
+      .set('Cookie', cookie)
+      .send({
+        title: 'asdf',
+        price: -10,
+      })
+      .expect(400);
+
+    await requestAgent
+      .post(apiRoute)
+      .set('Cookie', cookie)
+      .send({
+        title: 'asdf',
+      })
+      .expect(400);
+  });
 
   it('should create a new ticket', async () => {
     return requestAgent
