@@ -12,7 +12,7 @@ const router = express.Router();
 router.post(
   '/api/users/signin',
   body('email').trim().isEmail().withMessage('Email must be valid'),
-  body('password').trim().notEmpty().withMessage('Password must be between 4 and 20 characters'),
+  body('password').trim().notEmpty().withMessage('Password must be provided'),
   validateRequestMiddleware,
   async (req, res) => {
     const { email, password } = req.body as { email: string; password: string };
