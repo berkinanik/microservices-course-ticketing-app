@@ -1,12 +1,11 @@
 import request from 'supertest';
 import { app } from '../../app';
-import supertest from 'supertest';
 import { signout, signup } from '../../test/utils';
 
 describe('signin', () => {
   const apiRoute = '/api/users/signin';
 
-  const requestAgent = supertest.agent(app);
+  const requestAgent = request.agent(app);
 
   beforeEach(async () => {
     await signup(requestAgent);
