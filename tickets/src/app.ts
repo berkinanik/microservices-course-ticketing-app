@@ -4,7 +4,12 @@ import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 
 import { NotFoundError, currentUserMiddleware, errorHandlerMiddleware } from '@b.anik/common';
-import { newTicketRouter, showTicketRouter, updateTicketRouter } from './routes';
+import {
+  deleteTicketRouter,
+  newTicketRouter,
+  showTicketRouter,
+  updateTicketRouter,
+} from './routes';
 
 const app = express();
 
@@ -27,6 +32,7 @@ app.use(currentUserMiddleware);
 app.use(newTicketRouter);
 app.use(showTicketRouter);
 app.use(updateTicketRouter);
+app.use(deleteTicketRouter);
 
 // Middlewares after route handlers
 app.all('*', () => {
