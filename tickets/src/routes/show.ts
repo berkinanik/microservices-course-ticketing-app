@@ -1,13 +1,14 @@
 import express from 'express';
 import { Ticket } from '../models';
 import { NotFoundError } from '@b.anik/common';
+import { isValidObjectId } from 'mongoose';
 
 const router = express.Router();
 
 router.get('/api/tickets/:id', async (req, res) => {
   const { id } = req.params;
 
-  if (!id || id.length !== 24) {
+  if (!isValidObjectId(id)) {
     throw new NotFoundError();
   }
 
