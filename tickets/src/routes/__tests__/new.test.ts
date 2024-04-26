@@ -1,7 +1,7 @@
 import request from 'supertest';
 import { app } from '../../app';
 import { getCookieHeader } from '../../test/utils';
-import { Ticket } from '../../models';
+import { Ticket, TicketDoc } from '../../models';
 
 describe('new', () => {
   const apiRoute = '/api/tickets';
@@ -79,14 +79,15 @@ describe('new', () => {
     const tickets = await Ticket.countDocuments().then((count) => count);
     expect(tickets).toEqual(0);
 
-    await requestAgent
+    const ticketResponse = await requestAgent
       .post(apiRoute)
       .set('Cookie', cookie)
       .send({
         title: 'Concert',
         price: '20',
       })
-      .expect(201);
+      .expect(201)
+      .then((res) => res.body?.ticket as TicketDoc);
 
     const ticketsAfter = await Ticket.countDocuments().then((count) => count);
     expect(ticketsAfter).toEqual(1);
@@ -94,5 +95,8 @@ describe('new', () => {
     const ticket = await Ticket.findOne({ title: 'Concert' });
     expect(ticket).toBeDefined();
     expect(ticket!.price).toEqual(20);
+
+    expect(ticketResponse.title).toEqual('Concert');
+    expect(ticketResponse.price).toEqual(20);
   });
 });
