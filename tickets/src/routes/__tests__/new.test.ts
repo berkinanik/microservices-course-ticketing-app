@@ -2,6 +2,7 @@ import request from 'supertest';
 import { app } from '../../app';
 import { getCookieHeader } from '../../test/utils';
 import { Ticket, TicketDoc } from '../../models';
+import { natsWrapper } from '../../nats-wrapper';
 
 describe('new', () => {
   const apiRoute = '/api/tickets';
@@ -98,5 +99,24 @@ describe('new', () => {
 
     expect(ticketResponse.title).toEqual('Concert');
     expect(ticketResponse.price).toEqual(20);
+  });
+
+  it('should publish ticket:created event', async () => {
+    const tickets = await Ticket.countDocuments().then((count) => count);
+    expect(tickets).toEqual(0);
+
+    await requestAgent
+      .post(apiRoute)
+      .set('Cookie', cookie)
+      .send({
+        title: 'Concert',
+        price: '20',
+      })
+      .expect(201);
+
+    const ticketsAfter = await Ticket.countDocuments().then((count) => count);
+    expect(ticketsAfter).toEqual(1);
+
+    expect(natsWrapper.client.publish).toHaveBeenCalledTimes(1);
   });
 });

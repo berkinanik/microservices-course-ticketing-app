@@ -1,3 +1,10 @@
-import { mocks } from '@b.anik/common';
-
-export const natsWrapper = mocks.natsWrapper;
+export const natsWrapper = {
+  connect: jest.fn().mockImplementation(() => Promise.resolve()),
+  client: {
+    publish: jest.fn().mockImplementation((subject: string, data: string, callback: () => void) => {
+      callback();
+    }),
+    on: jest.fn(),
+    close: jest.fn(),
+  },
+};
