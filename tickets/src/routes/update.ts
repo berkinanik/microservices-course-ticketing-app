@@ -8,6 +8,8 @@ import express from 'express';
 import { body } from 'express-validator';
 import { isValidObjectId } from 'mongoose';
 import { Ticket, TicketDoc } from '../models';
+import { TicketUpdatedPublisher } from '../events';
+import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();
 
@@ -37,7 +39,14 @@ router.put(
     ticket.title = req.body.title;
     ticket.price = req.body.price;
 
-    await ticket.save();
+    const updatedTicket = await ticket.save();
+
+    await new TicketUpdatedPublisher(natsWrapper.client).publish({
+      id: updatedTicket.id,
+      title: updatedTicket.title,
+      price: updatedTicket.price,
+      userId: updatedTicket.userId,
+    });
 
     return res.status(200).send({
       ticket,
