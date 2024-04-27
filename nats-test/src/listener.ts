@@ -15,8 +15,15 @@ stan.on('connect', () => {
     process.exit();
   });
 
-  const options = stan.subscriptionOptions().setManualAckMode(true);
-  const subscription = stan.subscribe('ticket:created', 'listenerQueueGroup', options);
+  const options = stan
+    .subscriptionOptions()
+    // require manual acknowledgment of messages
+    .setManualAckMode(true)
+    // deliver all messages from the beginning
+    .setDeliverAllAvailable()
+    // deliver only the messages that have not been acknowledged
+    .setDurableName('queue-durable-name');
+  const subscription = stan.subscribe('ticket:created', 'queue-group-name', options);
 
   subscription.on('message', (msg: Message) => {
     const data = msg.getData();
