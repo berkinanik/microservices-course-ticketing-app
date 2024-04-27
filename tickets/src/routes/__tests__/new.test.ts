@@ -105,18 +105,23 @@ describe('new', () => {
     const tickets = await Ticket.countDocuments().then((count) => count);
     expect(tickets).toEqual(0);
 
-    await requestAgent
+    const createdTicket = await requestAgent
       .post(apiRoute)
       .set('Cookie', cookie)
       .send({
         title: 'Concert',
         price: '20',
       })
-      .expect(201);
+      .expect(201)
+      .then((res) => res.body?.ticket as TicketDoc);
 
     const ticketsAfter = await Ticket.countDocuments().then((count) => count);
     expect(ticketsAfter).toEqual(1);
 
-    expect(natsWrapper.client.publish).toHaveBeenCalledTimes(1);
+    expect(natsWrapper.client.publish).toHaveBeenCalledWith(
+      expect.stringContaining('ticket:created'),
+      expect.stringContaining(createdTicket.id),
+      expect.any(Function),
+    );
   });
 });

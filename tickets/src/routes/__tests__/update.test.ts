@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import { TicketDoc } from '../../models';
 import { getCookieHeader } from '../../test/utils';
 import { app } from '../../app';
+import { natsWrapper } from '../../nats-wrapper';
 
 describe('update', () => {
   const apiRoute = '/api/tickets';
@@ -101,5 +102,22 @@ describe('update', () => {
     expect(updatedTicket.price).toEqual(50);
     expect(updatedTicket.userId).toEqual(existingTicket.userId);
     expect(updatedTicket.id).toEqual(existingTicket.id);
+  });
+
+  it('should publish a ticket:updated event', async () => {
+    const updatedTicket = await requestAgent
+      .put(`${apiRoute}/${existingTicket.id}`)
+      .send({
+        title: 'updated-title',
+        price: 50,
+      })
+      .expect(200)
+      .then((res) => res.body?.ticket as TicketDoc);
+
+    expect(natsWrapper.client.publish).toHaveBeenCalledWith(
+      expect.stringContaining('ticket:updated'),
+      expect.stringContaining(updatedTicket.id),
+      expect.any(Function),
+    );
   });
 });
