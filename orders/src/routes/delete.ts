@@ -1,0 +1,9 @@
+import express from 'express';
+
+const router = express.Router();
+
+router.post('/api/orders/:orderId', async (req, res) => {
+  res.send({});
+});
+
+export { router as deleteOrderRouter };
