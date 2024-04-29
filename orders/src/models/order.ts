@@ -25,7 +25,6 @@ interface OrderModel extends mongoose.Model<any> {
 }
 
 const orderSchema = new mongoose.Schema(
-  // TODO schema definition
   {
     userId: {
       type: String,
