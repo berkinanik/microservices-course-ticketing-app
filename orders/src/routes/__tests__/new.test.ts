@@ -119,4 +119,6 @@ describe('new', () => {
     expect(order.userId).toEqual('user-id-123');
     expect(order.status).toMatch(/created/i);
   });
+
+  it.todo('should publish an event after creating an order');
 });
