@@ -5,16 +5,19 @@ interface TicketAttrs {
   id?: string;
   title: string;
   price: number;
+  version: number;
 }
 
 export interface TicketDoc extends mongoose.Document {
   title: string;
   price: number;
+  version: number;
   isReserved(): Promise<boolean>;
 }
 
 interface TicketModel extends mongoose.Model<TicketDoc> {
   build(attrs: TicketAttrs): TicketDoc;
+  findByEvent(event: { id: string; version: number }): Promise<TicketDoc | null>;
 }
 
 const ticketSchema = new mongoose.Schema(
@@ -24,6 +27,10 @@ const ticketSchema = new mongoose.Schema(
       required: true,
     },
     price: {
+      type: Number,
+      required: true,
+    },
+    version: {
       type: Number,
       required: true,
     },
@@ -50,6 +57,18 @@ ticketSchema.statics.build = (attrs: TicketAttrs): TicketDoc => {
     _id: id,
     ...rest,
   });
+};
+
+ticketSchema.statics.findByEvent = async (event: {
+  id: string;
+  version: number;
+}): Promise<TicketDoc | null> => {
+  const ticket = await Ticket.findOne({
+    _id: event.id,
+    version: event.version - 1,
+  });
+
+  return ticket;
 };
 
 // Run query to look at all orders. Find an order where the ticket

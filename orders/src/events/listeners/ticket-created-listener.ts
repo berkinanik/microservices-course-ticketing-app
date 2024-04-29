@@ -9,13 +9,14 @@ export class TicketCreatedListener extends Listener<TicketCreatedEvent> {
 
   async onMessage(data: TicketCreatedEvent['data'], _msg: Message) {
     return new Promise<void>(async (resolve, reject) => {
-      const { id, title, price } = data;
+      const { id, title, price, version } = data;
 
       try {
         const ticket = Ticket.build({
           id,
           title,
           price,
+          version,
         });
         await ticket.save();
 

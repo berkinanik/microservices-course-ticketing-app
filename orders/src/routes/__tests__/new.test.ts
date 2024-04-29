@@ -75,6 +75,7 @@ describe('new', () => {
     const ticket = Ticket.build({
       title: 'concert',
       price: 20,
+      version: 0,
     });
     await ticket.save();
     const order = Order.build({
@@ -99,6 +100,7 @@ describe('new', () => {
     const ticket = Ticket.build({
       title: 'concert',
       price: 20,
+      version: 0,
     });
     await ticket.save();
 
@@ -125,6 +127,7 @@ describe('new', () => {
     const ticket = Ticket.build({
       title: 'concert',
       price: 20,
+      version: 0,
     });
     await ticket.save();
 
