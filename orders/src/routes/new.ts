@@ -48,8 +48,6 @@ router.post(
     });
     await order.save();
 
-    console.log('🚀 ~ order:', order);
-
     // Publish an event saying that an order was created
     new OrderCreatedPublisher(natsWrapper.client).publish({
       id: order.id,

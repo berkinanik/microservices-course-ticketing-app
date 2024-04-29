@@ -1,7 +1,8 @@
-import mongoose from 'mongoose';
+import mongoose, { isValidObjectId } from 'mongoose';
 import { Order, OrderStatus } from './order';
 
 interface TicketAttrs {
+  id: string;
   title: string;
   price: number;
 }
@@ -39,7 +40,16 @@ const ticketSchema = new mongoose.Schema(
 );
 
 ticketSchema.statics.build = (attrs: TicketAttrs): TicketDoc => {
-  return new Ticket(attrs);
+  const { id, ...rest } = attrs;
+
+  if (!isValidObjectId(id)) {
+    throw new Error(`[Ticket.build] Invalid ObjectId: ${id}`);
+  }
+
+  return new Ticket({
+    _id: id,
+    ...rest,
+  });
 };
 
 // Run query to look at all orders. Find an order where the ticket
