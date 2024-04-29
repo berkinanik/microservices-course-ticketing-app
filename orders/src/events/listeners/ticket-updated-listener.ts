@@ -7,7 +7,7 @@ export class TicketUpdatedListener extends Listener<TicketUpdatedEvent> {
   readonly subject = Subjects.TicketUpdated;
   readonly queueGroupName = queueGroupName;
 
-  async onMessage(data: TicketUpdatedEvent['data'], _msg: Message) {
+  async onMessage(data: TicketUpdatedEvent['data'], _msg?: Message) {
     return new Promise<void>(async (resolve, reject) => {
       try {
         const ticket = await Ticket.findByEvent(data);
