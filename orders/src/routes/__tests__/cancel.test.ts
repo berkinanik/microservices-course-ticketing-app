@@ -95,4 +95,6 @@ describe('cancel', () => {
     const updatedOrder = await Order.findById(order.id);
     expect(updatedOrder!.status).toMatch(OrderStatus.Cancelled);
   });
+
+  it.todo('should publish an event after cancelling an order');
 });

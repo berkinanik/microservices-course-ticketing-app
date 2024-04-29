@@ -35,6 +35,8 @@ router.patch(
     order.status = OrderStatus.Cancelled;
     await order.save();
 
+    // TODO publish an event saying that an order was cancelled
+
     return res.status(200).send({
       order,
     });
