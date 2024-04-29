@@ -27,6 +27,7 @@ router.post(
 
     await new TicketCreatedPublisher(natsWrapper.client).publish({
       id: savedTicket.id,
+      version: savedTicket.version,
       title: savedTicket.title,
       price: savedTicket.price,
       userId: savedTicket.userId,
