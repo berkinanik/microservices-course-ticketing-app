@@ -4,7 +4,7 @@ import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 
 import { NotFoundError, currentUserMiddleware, errorHandlerMiddleware } from '@b.anik/common';
-import { deleteOrderRouter, newOrderRouter, showOrderRouter } from './routes';
+import { cancelOrderRouter, newOrderRouter, showOrderRouter } from './routes';
 
 const app = express();
 
@@ -25,7 +25,7 @@ app.use(currentUserMiddleware);
 
 // Route handlers
 app.use(showOrderRouter);
-app.use(deleteOrderRouter);
+app.use(cancelOrderRouter);
 app.use(newOrderRouter);
 
 // Middlewares after route handlers
