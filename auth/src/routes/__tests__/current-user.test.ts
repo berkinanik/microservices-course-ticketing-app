@@ -7,10 +7,6 @@ describe('current-user', () => {
 
   const requestAgent = request.agent(app);
 
-  it.skip('returns a 400 if not authenticated', async () => {
-    return requestAgent.get(apiRoute).send().expect(401);
-  });
-
   it('returns a 200 with current user as null if not authenticated', async () => {
     const response = await requestAgent.get(apiRoute).send().expect(200);
 
