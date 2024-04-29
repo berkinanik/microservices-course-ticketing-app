@@ -2,7 +2,7 @@ import mongoose, { isValidObjectId } from 'mongoose';
 import { Order, OrderStatus } from './order';
 
 interface TicketAttrs {
-  id: string;
+  id?: string;
   title: string;
   price: number;
 }
@@ -42,7 +42,7 @@ const ticketSchema = new mongoose.Schema(
 ticketSchema.statics.build = (attrs: TicketAttrs): TicketDoc => {
   const { id, ...rest } = attrs;
 
-  if (!isValidObjectId(id)) {
+  if (!!id && !isValidObjectId(id)) {
     throw new Error(`[Ticket.build] Invalid ObjectId: ${id}`);
   }
 
