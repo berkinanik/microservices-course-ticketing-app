@@ -35,7 +35,6 @@ export const AuthForm: React.FC<Props> = ({ action }) => {
       })
       .then((res) => {
         if (res.ok) {
-          toast.dismiss();
           toast.success(
             action === 'signup' ? 'Account created successfully!' : 'Signed in successfully!',
           );
@@ -43,7 +42,6 @@ export const AuthForm: React.FC<Props> = ({ action }) => {
           router.refresh();
         } else {
           for (const error of res.errors) {
-            toast.dismiss();
             toast.error(`${error.field ? `Error in ${error.field}:<br />` : ''}${error.message}`);
           }
         }
