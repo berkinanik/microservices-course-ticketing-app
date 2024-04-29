@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import { getCookieHeader } from '../../test/utils';
 import { app } from '../../app';
 import { Order, OrderDoc, Ticket } from '../../models';
+import { natsWrapper } from '../../nats-wrapper';
 
 describe('new', () => {
   const apiRoute = '/api/orders';
@@ -120,5 +121,35 @@ describe('new', () => {
     expect(order.status).toMatch(/created/i);
   });
 
-  it.todo('should publish an event after creating an order');
+  it('should publish an event after creating an order', async () => {
+    const ticket = Ticket.build({
+      title: 'concert',
+      price: 20,
+    });
+    await ticket.save();
+
+    const order = await requestAgent
+      .post(apiRoute)
+      .send({ ticketId: ticket.id })
+      .expect(201)
+      .then((res) => res.body.order as OrderDoc);
+
+    const spy = jest.spyOn(natsWrapper.client, 'publish');
+    expect(natsWrapper.client.publish).toHaveBeenCalledTimes(1);
+    const eventName = spy.mock.calls[0][0];
+    expect(eventName).toEqual('order:created');
+    const eventData = JSON.parse(spy.mock.calls[0][1] as string);
+    expect(eventData).toEqual(
+      expect.objectContaining({
+        id: order.id,
+        status: order.status,
+        userId: order.userId,
+        ticket: {
+          id: ticket.id,
+          price: ticket.price,
+        },
+        ...(order.expiresAt ? { expiresAt: new Date(order.expiresAt).toISOString() } : {}),
+      }),
+    );
+  });
 });

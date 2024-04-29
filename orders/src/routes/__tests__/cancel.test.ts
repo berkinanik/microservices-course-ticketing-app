@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import { getCookieHeader } from '../../test/utils';
 import { app } from '../../app';
 import { Order, OrderDoc, OrderStatus, Ticket } from '../../models';
+import { natsWrapper } from '../../nats-wrapper';
 
 describe('cancel', () => {
   const getApiRoute = (orderId: string) => `/api/orders/${orderId}/cancel`;
@@ -96,5 +97,34 @@ describe('cancel', () => {
     expect(updatedOrder!.status).toMatch(OrderStatus.Cancelled);
   });
 
-  it.todo('should publish an event after cancelling an order');
+  it('should publish an event after cancelling an order', async () => {
+    const ticket = Ticket.build({
+      title: 'Concert',
+      price: 20,
+    });
+    await ticket.save();
+
+    const order = Order.build({
+      userId: 'user-id-123',
+      expiresAt: new Date(),
+      ticket,
+    });
+    await order.save();
+
+    await requestAgent.patch(getApiRoute(order.id)).send().expect(200);
+
+    const spy = jest.spyOn(natsWrapper.client, 'publish');
+    expect(natsWrapper.client.publish).toHaveBeenCalledTimes(1);
+    const eventName = spy.mock.calls[0][0];
+    expect(eventName).toEqual('order:cancelled');
+    const eventData = JSON.parse(spy.mock.calls[0][1] as string);
+    expect(eventData).toEqual(
+      expect.objectContaining({
+        id: order.id,
+        ticket: {
+          id: ticket.id,
+        },
+      }),
+    );
+  });
 });

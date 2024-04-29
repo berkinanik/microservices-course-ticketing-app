@@ -8,6 +8,8 @@ import express from 'express';
 import { param } from 'express-validator';
 import { isValidObjectId } from 'mongoose';
 import { Order } from '../models';
+import { OrderCancelledPublisher } from '../events';
+import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();
 
@@ -22,7 +24,7 @@ router.patch(
   async (req, res) => {
     const { orderId } = req.params as { orderId: string };
 
-    const order = await Order.findById(orderId);
+    const order = await Order.findById(orderId).populate('ticket');
 
     if (!order) {
       throw new NotFoundError();
@@ -35,7 +37,13 @@ router.patch(
     order.status = OrderStatus.Cancelled;
     await order.save();
 
-    // TODO publish an event saying that an order was cancelled
+    // publish an event saying that an order was cancelled
+    new OrderCancelledPublisher(natsWrapper.client).publish({
+      id: order.id,
+      ticket: {
+        id: order.ticket.id,
+      },
+    });
 
     return res.status(200).send({
       order,
