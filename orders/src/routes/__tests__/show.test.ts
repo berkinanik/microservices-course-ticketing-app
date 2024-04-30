@@ -38,6 +38,7 @@ describe('show', () => {
 
     it('should return the orders for the user', async () => {
       const ticket = Ticket.build({
+        id: new mongoose.Types.ObjectId().toHexString(),
         title: 'Concert',
         price: 20,
         version: 0,
@@ -65,6 +66,7 @@ describe('show', () => {
 
     it('should not return the orders for other users', async () => {
       const ticket = Ticket.build({
+        id: new mongoose.Types.ObjectId().toHexString(),
         title: 'Concert',
         price: 20,
         version: 0,
@@ -119,6 +121,7 @@ describe('show', () => {
 
     it('should return the order', async () => {
       const ticket = Ticket.build({
+        id: new mongoose.Types.ObjectId().toHexString(),
         title: 'Concert',
         price: 20,
         version: 0,
@@ -152,6 +155,7 @@ describe('show', () => {
 
     it('should not return the orders for other users', async () => {
       const ticket = Ticket.build({
+        id: new mongoose.Types.ObjectId().toHexString(),
         title: 'Concert',
         price: 20,
         version: 0,

@@ -5,6 +5,7 @@ import { Ticket } from '../ticket';
 describe('order model', () => {
   it('should implement optimistic concurrency control', async () => {
     const ticket = await Ticket.build({
+      id: new mongoose.Types.ObjectId().toHexString(),
       title: 'concert',
       price: 5,
       version: 0,
@@ -34,6 +35,7 @@ describe('order model', () => {
 
   it('should increment the version number on multiple saves', async () => {
     const ticket = await Ticket.build({
+      id: new mongoose.Types.ObjectId().toHexString(),
       title: 'concert',
       price: 5,
       version: 0,

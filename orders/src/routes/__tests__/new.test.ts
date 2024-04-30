@@ -73,6 +73,7 @@ describe('new', () => {
 
   it('should return an error if the ticket is already reserved', async () => {
     const ticket = Ticket.build({
+      id: new mongoose.Types.ObjectId().toHexString(),
       title: 'concert',
       price: 20,
       version: 0,
@@ -98,6 +99,7 @@ describe('new', () => {
 
   it('should create an order', async () => {
     const ticket = Ticket.build({
+      id: new mongoose.Types.ObjectId().toHexString(),
       title: 'concert',
       price: 20,
       version: 0,
@@ -125,6 +127,7 @@ describe('new', () => {
 
   it('should publish an event after creating an order', async () => {
     const ticket = Ticket.build({
+      id: new mongoose.Types.ObjectId().toHexString(),
       title: 'concert',
       price: 20,
       version: 0,

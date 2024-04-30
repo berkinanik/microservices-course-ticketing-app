@@ -47,6 +47,7 @@ describe('cancel', () => {
 
   it('should not cancel the orders for other users', async () => {
     const ticket = Ticket.build({
+      id: new mongoose.Types.ObjectId().toHexString(),
       title: 'Concert',
       price: 20,
       version: 0,
@@ -72,6 +73,7 @@ describe('cancel', () => {
 
   it('should cancel the order', async () => {
     const ticket = Ticket.build({
+      id: new mongoose.Types.ObjectId().toHexString(),
       title: 'Concert',
       price: 20,
       version: 0,
@@ -101,6 +103,7 @@ describe('cancel', () => {
 
   it('should publish an event after cancelling an order', async () => {
     const ticket = Ticket.build({
+      id: new mongoose.Types.ObjectId().toHexString(),
       title: 'Concert',
       price: 20,
       version: 0,
