@@ -62,4 +62,24 @@ describe('OrderCreatedListener', () => {
         expect(false).toBeTruthy();
       });
   });
+
+  it('should publish a ticket updated event', async () => {
+    await listener.onMessage(data);
+
+    const spy = jest.spyOn(natsWrapper.client, 'publish');
+    expect(spy).toHaveBeenCalledTimes(1);
+    const eventName = spy.mock.calls[0][0];
+    expect(eventName).toEqual('ticket:updated');
+    const eventData = JSON.parse(spy.mock.calls[0][1] as string);
+    expect(eventData).toEqual(
+      expect.objectContaining({
+        id: ticket.id,
+        version: 1,
+        title: ticket.title,
+        price: ticket.price,
+        userId: ticket.userId,
+        orderId: data.id,
+      }),
+    );
+  });
 });
