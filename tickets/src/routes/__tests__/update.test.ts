@@ -1,6 +1,6 @@
 import request from 'supertest';
 import mongoose from 'mongoose';
-import { TicketDoc } from '../../models';
+import { Ticket, TicketDoc } from '../../models';
 import { getCookieHeader } from '../../test/utils';
 import { app } from '../../app';
 import { natsWrapper } from '../../nats-wrapper';
@@ -10,7 +10,7 @@ describe('update', () => {
 
   const requestAgent = request.agent(app);
 
-  let existingTicket: TicketDoc;
+  let ticket: TicketDoc;
 
   beforeEach(async () => {
     const cookie = getCookieHeader();
@@ -24,12 +24,12 @@ describe('update', () => {
       })
       .expect(201)
       .then((res) => {
-        existingTicket = res.body.ticket;
+        ticket = res.body.ticket;
       });
   });
 
   it('should get a 401 if the user is not authenticated', async () => {
-    await request(app).put(`${apiRoute}/${existingTicket.id}`).send().expect(401);
+    await request(app).put(`${apiRoute}/${ticket.id}`).send().expect(401);
 
     requestAgent.set('Cookie', getCookieHeader());
   });
@@ -46,7 +46,7 @@ describe('update', () => {
 
   it('should return a 401 if user is not the owner of the ticket', async () => {
     return request(app)
-      .put(`${apiRoute}/${existingTicket.id}`)
+      .put(`${apiRoute}/${ticket.id}`)
       .set(
         'Cookie',
         getCookieHeader({
@@ -63,21 +63,21 @@ describe('update', () => {
 
   it('should return 400 if user provides invalid title or price', async () => {
     await requestAgent
-      .put(`${apiRoute}/${existingTicket.id}`)
+      .put(`${apiRoute}/${ticket.id}`)
       .send({
         title: 'This is a valid title',
         price: -10,
       })
       .expect(400);
     await requestAgent
-      .put(`${apiRoute}/${existingTicket.id}`)
+      .put(`${apiRoute}/${ticket.id}`)
       .send({
         title: '',
         price: 20,
       })
       .expect(400);
     return requestAgent
-      .put(`${apiRoute}/${existingTicket.id}`)
+      .put(`${apiRoute}/${ticket.id}`)
       .send({
         title: '',
         price: -10,
@@ -86,10 +86,8 @@ describe('update', () => {
   });
 
   it('should update the ticket with given payload', async () => {
-    const existingTicketCopy = structuredClone(existingTicket);
-
     const updatedTicket = await requestAgent
-      .put(`${apiRoute}/${existingTicket.id}`)
+      .put(`${apiRoute}/${ticket.id}`)
       .send({
         title: 'updated-title',
         price: 50,
@@ -100,13 +98,30 @@ describe('update', () => {
     expect(updatedTicket).toBeDefined();
     expect(updatedTicket.title).toEqual('updated-title');
     expect(updatedTicket.price).toEqual(50);
-    expect(updatedTicket.userId).toEqual(existingTicket.userId);
-    expect(updatedTicket.id).toEqual(existingTicket.id);
+    expect(updatedTicket.userId).toEqual(ticket.userId);
+    expect(updatedTicket.id).toEqual(ticket.id);
+  });
+
+  it('should not allow updating the ticket if it is reserved', async () => {
+    const existingTicket = (await Ticket.findById(ticket.id)) as TicketDoc;
+    existingTicket.orderId = new mongoose.Types.ObjectId().toHexString();
+    await existingTicket.save();
+
+    return requestAgent
+      .put(`${apiRoute}/${ticket.id}`)
+      .send({
+        title: 'updated-title',
+        price: 50,
+      })
+      .expect(400)
+      .then((res) => {
+        expect(res.body.errors[0].message).toMatch(/Cannot edit a reserved ticket/i);
+      });
   });
 
   it('should publish a ticket:updated event', async () => {
     const updatedTicket = await requestAgent
-      .put(`${apiRoute}/${existingTicket.id}`)
+      .put(`${apiRoute}/${ticket.id}`)
       .send({
         title: 'updated-title',
         price: 50,
