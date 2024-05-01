@@ -32,6 +32,14 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
+    - image: berkinanik/expiration
+      context: expiration
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
     - image: berkinanik/client
       context: client
       docker:
