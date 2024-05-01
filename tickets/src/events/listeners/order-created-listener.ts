@@ -2,10 +2,11 @@ import { Listener, OrderCreatedEvent, Subjects } from '@b.anik/common';
 import { Message } from 'node-nats-streaming';
 import { Ticket, TicketDoc } from '../../models';
 import { TicketUpdatedPublisher } from '../publishers';
+import { queueGroupName } from './queue-group-name';
 
 export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
   readonly subject = Subjects.OrderCreated;
-  queueGroupName = 'tickets-service';
+  readonly queueGroupName = queueGroupName;
 
   onMessage(data: OrderCreatedEvent['data'], _msg?: Message) {
     return new Promise<void>(async (resolve, reject) => {
