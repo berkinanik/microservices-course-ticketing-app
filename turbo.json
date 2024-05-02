@@ -6,7 +6,8 @@
       "dependsOn": ["typecheck"]
     },
     "test:watch": {
-      "dependsOn": ["typecheck"]
+      "dependsOn": ["typecheck"],
+      "cache": false
     },
     "typecheck": {}
   }
