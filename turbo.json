@@ -4,6 +4,9 @@
     "test": {
       "dependsOn": ["typecheck"]
     },
+    "test:watch": {
+      "dependsOn": ["typecheck"]
+    },
     "typecheck": {}
   }
 }

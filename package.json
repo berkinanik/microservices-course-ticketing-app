@@ -6,6 +6,7 @@
   "scripts": {
     "update:common": "pnpm --recursive update \"@b.anik/common\"",
     "test": "turbo test",
+    "test:watch": "turbo test:watch",
     "typecheck": "turbo typecheck"
   },
   "keywords": [],
