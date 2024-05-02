@@ -1,3 +1,4 @@
+import { startListeners } from './events';
 import { natsWrapper } from './nats-wrapper';
 
 const start = async () => {
@@ -29,6 +30,8 @@ const start = async () => {
     process.on('SIGINT', () => natsWrapper.client.close());
     process.on('SIGTERM', () => natsWrapper.client.close());
     process.on('SIGUSR2', () => natsWrapper.client.close());
+
+    startListeners(natsWrapper.client);
   } catch (err) {
     console.log(err);
     process.exit(1);
