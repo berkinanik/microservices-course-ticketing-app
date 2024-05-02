@@ -1,0 +1,14 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "lockfile": {},
+    "test": {
+      "dependsOn": ["typecheck"]
+    },
+    "test:watch": {
+      "dependsOn": ["typecheck"],
+      "cache": false
+    },
+    "typecheck": {}
+  }
+}

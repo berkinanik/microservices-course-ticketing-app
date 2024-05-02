@@ -1,0 +1,27 @@
+{
+  "name": "ticketing-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write .",
+    "lockfile": "pnpm i && turbo lockfile",
+    "pub:common": "cd packages/common && pnpm pub",
+    "update:common": "pnpm --recursive update \"@b.anik/common\" --latest",
+    "test": "turbo test",
+    "test:watch": "turbo test:watch",
+    "typecheck": "turbo typecheck"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@pnpm/make-dedicated-lockfile": "^0.6.3",
+    "prettier": "^3.2.5",
+    "turbo": "^1.13.3"
+  },
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  }
+}
