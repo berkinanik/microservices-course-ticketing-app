@@ -1,4 +1,5 @@
 import {
+  BadRequestError,
   NotAuthorizedError,
   NotFoundError,
   OrderStatus,
@@ -7,7 +8,7 @@ import {
 import express from 'express';
 import { param } from 'express-validator';
 import { isValidObjectId } from 'mongoose';
-import { Order } from '../models';
+import { Order, OrderDoc } from '../models';
 import { OrderCancelledPublisher } from '../events';
 import { natsWrapper } from '../nats-wrapper';
 
@@ -24,7 +25,7 @@ router.patch(
   async (req, res) => {
     const { orderId } = req.params as { orderId: string };
 
-    const order = await Order.findById(orderId).populate('ticket');
+    const order = (await Order.findById(orderId).populate('ticket')) as OrderDoc | null;
 
     if (!order) {
       throw new NotFoundError();
@@ -32,6 +33,10 @@ router.patch(
 
     if (order.userId !== req.currentUser!.id) {
       throw new NotAuthorizedError();
+    }
+
+    if (order.status === OrderStatus.Cancelled) {
+      throw new BadRequestError('Order is already cancelled');
     }
 
     order.status = OrderStatus.Cancelled;
