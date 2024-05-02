@@ -21,7 +21,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@b.anik/common": "*",
+    "@b.anik/common": "^0.0.41",
     "bull": "^4.12.2",
     "node-nats-streaming": "^0.3.2"
   },

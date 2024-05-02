@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "update:common": "pnpm --recursive update \"@b.anik/common\"",
     "test": "turbo test",
     "typecheck": "turbo typecheck"
   },

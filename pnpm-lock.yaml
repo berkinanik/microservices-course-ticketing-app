@@ -113,8 +113,8 @@ importers:
   services/auth:
     dependencies:
       '@b.anik/common':
-        specifier: '*'
-        version: 0.0.39
+        specifier: ^0.0.41
+        version: 0.0.41
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -189,8 +189,8 @@ importers:
   services/expiration:
     dependencies:
       '@b.anik/common':
-        specifier: '*'
-        version: 0.0.39
+        specifier: ^0.0.41
+        version: 0.0.41
       bull:
         specifier: ^4.12.2
         version: 4.12.2
@@ -223,8 +223,8 @@ importers:
   services/orders:
     dependencies:
       '@b.anik/common':
-        specifier: '*'
-        version: 0.0.39
+        specifier: ^0.0.41
+        version: 0.0.41
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -299,8 +299,8 @@ importers:
   services/payments:
     dependencies:
       '@b.anik/common':
-        specifier: '*'
-        version: 0.0.39
+        specifier: ^0.0.41
+        version: 0.0.41
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -375,8 +375,8 @@ importers:
   services/tickets:
     dependencies:
       '@b.anik/common':
-        specifier: '*'
-        version: 0.0.39
+        specifier: ^0.0.41
+        version: 0.0.41
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -458,8 +458,8 @@ packages:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
 
-  '@b.anik/common@0.0.39':
-    resolution: {integrity: sha512-X+57P0IGXeKwDWIfBhNW/f/yZzVivjkzun+fA6LeZfq6nP4Ilk1XyjUEkyQtyqHJq/3zPhzKV2cyAZauiE9hIQ==}
+  '@b.anik/common@0.0.41':
+    resolution: {integrity: sha512-l8Q5wMg6rLqcOFu/URH8rxUukXaQuR8auYDyp63gl0IYmPCUddUE0MC39WqVQ4YMHdcTTNy2hBEFjKtKWLgHvw==}
 
   '@babel/code-frame@7.24.2':
     resolution: {integrity: sha512-y5+tLQyV8pg3fsiln67BVLD1P13Eg4lh5RW9mF0zUuvLrv9uIQ4MCL+CRT+FTsBlBjcIan6PGsLcBN0m3ClUyQ==}
@@ -4044,7 +4044,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@b.anik/common@0.0.39':
+  '@b.anik/common@0.0.41':
     dependencies:
       cookie-session: 2.1.0
       express: 4.19.2
