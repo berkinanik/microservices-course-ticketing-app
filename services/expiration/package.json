@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon src/index.ts",
     "start": "ts-node src/index.ts",
-    "test": "jest --watchAll --no-cache --verbose",
+    "test": "jest --verbose",
+    "test:watch": "jest --watchAll --verbose",
     "typecheck": "tsc --noEmit"
   },
   "jest": {
@@ -20,7 +21,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@b.anik/common": "0.0.38",
+    "@b.anik/common": "*",
     "bull": "^4.12.2",
     "node-nats-streaming": "^0.3.2"
   },
