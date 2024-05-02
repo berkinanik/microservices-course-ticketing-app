@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "format": "prettier --write .",
+    "lockfile": "pnpm i && turbo lockfile",
     "pub:common": "cd packages/common && pnpm pub",
     "update:common": "pnpm --recursive update \"@b.anik/common\" --latest",
     "test": "turbo test",
@@ -15,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@pnpm/make-dedicated-lockfile": "^0.6.3",
     "prettier": "^3.2.5",
     "turbo": "^1.13.3"
   },

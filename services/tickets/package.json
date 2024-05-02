@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.ts",
+    "lockfile": "make-dedicated-lockfile",
     "start": "ts-node src/index.ts",
     "test": "jest --verbose",
     "test:watch": "jest --watchAll --verbose",
