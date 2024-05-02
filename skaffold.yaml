@@ -40,6 +40,14 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
+    - image: berkinanik/payments
+      context: payments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
     - image: berkinanik/client
       context: client
       docker:
