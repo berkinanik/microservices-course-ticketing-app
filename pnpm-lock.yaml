@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      prettier:
+        specifier: ^3.2.5
+        version: 3.2.5
       turbo:
         specifier: ^1.13.3
         version: 1.13.3
@@ -76,6 +79,25 @@ importers:
         specifier: ^5
         version: 5.4.5
 
+  nats-test:
+    dependencies:
+      node-nats-streaming:
+        specifier: ^0.3.2
+        version: 0.3.2
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.12.8
+      node-ts:
+        specifier: ^6.0.1
+        version: 6.0.1
+      nodemon:
+        specifier: ^3.1.0
+        version: 3.1.0
+      typescript:
+        specifier: ^5.4.5
+        version: 5.4.5
+
   packages/common:
     dependencies:
       cookie-session:
@@ -113,8 +135,8 @@ importers:
   services/auth:
     dependencies:
       '@b.anik/common':
-        specifier: ^0.0.41
-        version: 0.0.41
+        specifier: ^0.0.42
+        version: 0.0.42
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -189,8 +211,8 @@ importers:
   services/expiration:
     dependencies:
       '@b.anik/common':
-        specifier: ^0.0.41
-        version: 0.0.41
+        specifier: ^0.0.42
+        version: 0.0.42
       bull:
         specifier: ^4.12.2
         version: 4.12.2
@@ -223,8 +245,8 @@ importers:
   services/orders:
     dependencies:
       '@b.anik/common':
-        specifier: ^0.0.41
-        version: 0.0.41
+        specifier: ^0.0.42
+        version: 0.0.42
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -299,8 +321,8 @@ importers:
   services/payments:
     dependencies:
       '@b.anik/common':
-        specifier: ^0.0.41
-        version: 0.0.41
+        specifier: ^0.0.42
+        version: 0.0.42
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -375,8 +397,8 @@ importers:
   services/tickets:
     dependencies:
       '@b.anik/common':
-        specifier: ^0.0.41
-        version: 0.0.41
+        specifier: ^0.0.42
+        version: 0.0.42
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -458,8 +480,8 @@ packages:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
 
-  '@b.anik/common@0.0.41':
-    resolution: {integrity: sha512-l8Q5wMg6rLqcOFu/URH8rxUukXaQuR8auYDyp63gl0IYmPCUddUE0MC39WqVQ4YMHdcTTNy2hBEFjKtKWLgHvw==}
+  '@b.anik/common@0.0.42':
+    resolution: {integrity: sha512-Dm8HqV6ZMXOVgUO1T6kNqcCjD4QFxJjrTBNiGwPFLufZA7rV97TEnQLyh2Y59dBhNtv9wJ892fuiqldBSy5Pdg==}
 
   '@babel/code-frame@7.24.2':
     resolution: {integrity: sha512-y5+tLQyV8pg3fsiln67BVLD1P13Eg4lh5RW9mF0zUuvLrv9uIQ4MCL+CRT+FTsBlBjcIan6PGsLcBN0m3ClUyQ==}
@@ -876,6 +898,9 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
+  '@rauschma/stringio@1.4.0':
+    resolution: {integrity: sha512-3uor2f/MXZkmX5RJf8r+OC3WvZVzpSme0yyL0rQDPEnatE02qRcqwEwnsgpgriEck0S/n4vWtUd6tTtrJwk45Q==}
+
   '@rushstack/eslint-patch@1.10.2':
     resolution: {integrity: sha512-hw437iINopmQuxWPSUEvqE56NCPsiU8N4AYtfHmJFckclktzK9YQJieD3XkDCDH4OjL+C7zgPUh73R/nrcHrqw==}
 
@@ -974,6 +999,9 @@ packages:
 
   '@types/mime@1.3.5':
     resolution: {integrity: sha512-/pyBZWSLD2n0dcHE3hq8s8ZvcETHtEuF+3E7XVt0Ig2nvsVQXdghHVcEkIWjy9A0wKfTn97a/PSDYohKIlnP/w==}
+
+  '@types/node@10.17.60':
+    resolution: {integrity: sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw==}
 
   '@types/node@20.12.8':
     resolution: {integrity: sha512-NU0rJLJnshZWdE/097cdCBbyW1h4hEg0xpovcoAQYHl8dnEyp/NAOiE45pvc+Bd1Dt+2r94v2eGFpQJ4R7g+2w==}
@@ -2966,6 +2994,10 @@ packages:
   node-releases@2.0.14:
     resolution: {integrity: sha512-y10wOWt8yZpqXmOgRo77WaHEmhYQYGNA6y421PKsKYWEK8aW+cqAphborZDhqfyKrbZEN92CN1X2KbafY2s7Yw==}
 
+  node-ts@6.0.1:
+    resolution: {integrity: sha512-nxFz4tJYv9Yu6u4e3B1rmfh45Zmge7rD/MlTA5V98+Q5eFsqzCWTWDYvbrNEPGtnzhkqNLk4E2r3C6VSfNoZNQ==}
+    engines: {node: '>=18.0.0'}
+
   nodemon@3.1.0:
     resolution: {integrity: sha512-xqlktYlDMCepBJd43ZQhjWwMw2obW/JRvkrLxq5RCNcuDDX1DbcPT+qT1IlIIdf+DhnWs90JpTMe+Y5KxOchvA==}
     engines: {node: '>=10'}
@@ -4044,7 +4076,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@b.anik/common@0.0.41':
+  '@b.anik/common@0.0.42':
     dependencies:
       cookie-session: 2.1.0
       express: 4.19.2
@@ -4572,6 +4604,10 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
+  '@rauschma/stringio@1.4.0':
+    dependencies:
+      '@types/node': 10.17.60
+
   '@rushstack/eslint-patch@1.10.2': {}
 
   '@sinclair/typebox@0.27.8': {}
@@ -4688,6 +4724,8 @@ snapshots:
   '@types/methods@1.1.4': {}
 
   '@types/mime@1.3.5': {}
+
+  '@types/node@10.17.60': {}
 
   '@types/node@20.12.8':
     dependencies:
@@ -7160,6 +7198,11 @@ snapshots:
       nuid: 1.1.6
 
   node-releases@2.0.14: {}
+
+  node-ts@6.0.1:
+    dependencies:
+      '@rauschma/stringio': 1.4.0
+      '@types/node': 20.12.8
 
   nodemon@3.1.0:
     dependencies:

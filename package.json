@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "update:common": "pnpm --recursive update \"@b.anik/common\"",
+    "format": "prettier --write .",
+    "pub:common": "cd packages/common && pnpm pub",
+    "update:common": "pnpm --recursive update \"@b.anik/common\" --latest",
     "test": "turbo test",
     "test:watch": "turbo test:watch",
     "typecheck": "turbo typecheck"
@@ -13,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "prettier": "^3.2.5",
     "turbo": "^1.13.3"
   },
   "engines": {
