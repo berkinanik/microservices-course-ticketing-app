@@ -61,6 +61,17 @@ describe('ExpirationCompleteListener', () => {
     );
   });
 
+  it('should resolve without publishing if order is already cancelled', async () => {
+    const order = (await Order.findById(data.orderId)) as OrderDoc;
+    order.status = OrderStatus.Cancelled;
+    await order.save();
+
+    await expect(listener.onMessage(data)).resolves.toBeUndefined();
+
+    const spy = jest.spyOn(natsWrapper.client, 'publish');
+    expect(spy).not.toHaveBeenCalled();
+  });
+
   it('should reject if order not found', async () => {
     await expect(
       listener.onMessage({
