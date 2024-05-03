@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@b.anik/common':
-        specifier: ^0.0.43
-        version: 0.0.43
+        specifier: ^0.0.44
+        version: 0.0.44
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -103,8 +103,8 @@ packages:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
 
-  '@b.anik/common@0.0.43':
-    resolution: {integrity: sha512-YBFu9M052Mh7aOku7NoVmKzsLXcRvHNO+2mmqfFCmuuEQ8bszUjlSyrejCURWc1RDivMGEb70Ozcd5/iXybPEw==}
+  '@b.anik/common@0.0.44':
+    resolution: {integrity: sha512-EOeAGuEsZN61V3LIcKpj4VEY8AOb20PpvHQf/9+cLhUeZB5u6i0JVqPGiBLxZq/5RpOn3J1fjd5wiw690nnlFA==}
 
   '@babel/code-frame@7.24.2':
     resolution: {integrity: sha512-y5+tLQyV8pg3fsiln67BVLD1P13Eg4lh5RW9mF0zUuvLrv9uIQ4MCL+CRT+FTsBlBjcIan6PGsLcBN0m3ClUyQ==}
@@ -2440,7 +2440,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@b.anik/common@0.0.43':
+  '@b.anik/common@0.0.44':
     dependencies:
       cookie-session: 2.1.0
       express: 4.19.2
