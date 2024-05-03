@@ -89,4 +89,16 @@ describe('new', () => {
       source: token,
     });
   });
+
+  it('should return 400 if the payment fails', async () => {
+    const spy = jest
+      .spyOn(stripe.charges, 'create')
+      .mockResolvedValue({ id: 'stripe-id', paid: false } as any);
+
+    return requestAgent
+      .post(apiRoute)
+      .send({ token, orderId: order.id })
+      .expect(400)
+      .then((response) => expect(response.body.errors[0].message).toMatch(/payment failed/i));
+  });
 });
