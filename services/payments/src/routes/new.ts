@@ -8,7 +8,7 @@ import {
   requireAuthMiddleware,
   validateRequestMiddleware,
 } from '@b.anik/common';
-import { Order, OrderDoc } from '../models';
+import { Order, OrderDoc, Payment } from '../models';
 import { stripe } from '../stripe';
 
 const router = express.Router();
@@ -43,6 +43,15 @@ router.post(
     if (!charge.paid) {
       throw new BadRequestError('Payment failed');
     }
+
+    const payment = Payment.build({
+      order,
+      stripeId: charge.id,
+      userId: order.userId,
+    });
+    await payment.save();
+
+    // TODO payment complete event
 
     return res.status(201).send({ success: true });
   },

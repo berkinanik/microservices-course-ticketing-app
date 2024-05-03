@@ -1,7 +1,7 @@
 import request from 'supertest';
 import { app } from '../../app';
 import { getCookieHeader } from '../../test/utils';
-import { Order, OrderDoc } from '../../models';
+import { Order, OrderDoc, Payment, PaymentDoc } from '../../models';
 import mongoose from 'mongoose';
 import { OrderStatus } from '@b.anik/common';
 import { stripe } from '../../stripe';
@@ -93,12 +93,22 @@ describe('new', () => {
   it('should return 400 if the payment fails', async () => {
     const spy = jest
       .spyOn(stripe.charges, 'create')
-      .mockResolvedValue({ id: 'stripe-id', paid: false } as any);
+      .mockResolvedValueOnce({ id: 'stripe-id', paid: false } as any);
 
     return requestAgent
       .post(apiRoute)
       .send({ token, orderId: order.id })
       .expect(400)
       .then((response) => expect(response.body.errors[0].message).toMatch(/payment failed/i));
+  });
+
+  it('should save the payment to the database', async () => {
+    await requestAgent.post(apiRoute).send({ token, orderId: order.id }).expect(201);
+
+    const payment = (await Payment.findOne({ order: order.id }).populate(
+      'order',
+    )) as PaymentDoc | null;
+
+    expect(payment).toBeDefined();
   });
 });
