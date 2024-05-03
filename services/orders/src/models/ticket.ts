@@ -63,12 +63,10 @@ ticketSchema.statics.findByEvent = async (event: {
   id: string;
   version: number;
 }): Promise<TicketDoc | null> => {
-  const ticket = await Ticket.findOne({
+  return Ticket.findOne({
     _id: event.id,
     version: event.version - 1,
   });
-
-  return ticket;
 };
 
 // Run query to look at all orders. Find an order where the ticket
