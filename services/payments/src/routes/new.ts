@@ -10,6 +10,8 @@ import {
 } from '@b.anik/common';
 import { Order, OrderDoc, Payment } from '../models';
 import { stripe } from '../stripe';
+import { PaymentCompletePublisher } from '../events/publishers/payment-complete-publisher';
+import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();
 
@@ -51,7 +53,9 @@ router.post(
     });
     await payment.save();
 
-    // TODO payment complete event
+    new PaymentCompletePublisher(natsWrapper.client).publish({
+      orderId: payment.order.id,
+    });
 
     return res.status(201).send({ success: true });
   },

@@ -5,6 +5,7 @@ import { Order, OrderDoc, Payment, PaymentDoc } from '../../models';
 import mongoose from 'mongoose';
 import { OrderStatus } from '@b.anik/common';
 import { stripe } from '../../stripe';
+import { natsWrapper } from '../../nats-wrapper';
 
 describe('new', () => {
   const apiRoute = '/api/payments';
@@ -110,5 +111,17 @@ describe('new', () => {
     )) as PaymentDoc | null;
 
     expect(payment).toBeDefined();
+  });
+
+  it('should publish a payment complete event', async () => {
+    const spy = jest.spyOn(natsWrapper.client, 'publish');
+
+    await requestAgent.post(apiRoute).send({ token, orderId: order.id }).expect(201);
+
+    expect(spy).toHaveBeenCalledTimes(1);
+    const eventName = spy.mock.calls[0][0];
+    expect(eventName).toEqual('payment:complete');
+    const eventData = JSON.parse(spy.mock.calls[0][1] as string);
+    expect(eventData.orderId).toEqual(order.id);
   });
 });
