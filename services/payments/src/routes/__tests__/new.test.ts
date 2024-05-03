@@ -4,6 +4,7 @@ import { getCookieHeader } from '../../test/utils';
 import { Order, OrderDoc } from '../../models/order';
 import mongoose from 'mongoose';
 import { OrderStatus } from '@b.anik/common';
+import { stripe } from '../../stripe';
 
 describe('new', () => {
   const apiRoute = '/api/payments';
@@ -74,5 +75,18 @@ describe('new', () => {
       })
       .expect(400)
       .then((response) => expect(response.body.errors[0].message).toMatch(/cancelled/i));
+  });
+
+  it('should call the stripe API with the correct arguments', async () => {
+    const spy = jest.spyOn(stripe.charges, 'create');
+
+    await requestAgent.post(apiRoute).send({ token, orderId: order.id }).expect(201);
+
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy.mock.calls[0][0]).toEqual({
+      currency: 'usd',
+      amount: order.price * 100,
+      source: token,
+    });
   });
 });

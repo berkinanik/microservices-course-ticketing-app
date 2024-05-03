@@ -9,6 +9,7 @@ import {
   validateRequestMiddleware,
 } from '@b.anik/common';
 import { Order, OrderDoc } from '../models/order';
+import { stripe } from '../stripe';
 
 const router = express.Router();
 
@@ -33,7 +34,13 @@ router.post(
       throw new BadRequestError('Cannot pay for a cancelled order');
     }
 
-    res.status(201).send({ success: true });
+    await stripe.charges.create({
+      currency: 'usd',
+      amount: order.price * 100, // stripe expects amount in minor currency unit
+      source: token,
+    });
+
+    return res.status(201).send({ success: true });
   },
 );
 
