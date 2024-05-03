@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/api/payments', requireAuthMiddleware, async (req, res) => {
   const payments = await Payment.find({
     userId: req.currentUser!.id,
-  });
+  }).populate('order');
 
   return res.status(200).send({ payments });
 });
@@ -23,7 +23,7 @@ router.get(
     const payment = await Payment.findOne({
       _id: req.params.id,
       userId: req.currentUser!.id,
-    });
+    }).populate('order');
 
     if (!payment) {
       throw new NotFoundError();
