@@ -4,7 +4,7 @@ import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 
 import { NotFoundError, currentUserMiddleware, errorHandlerMiddleware } from '@b.anik/common';
-import { newPaymentRouter } from './routes';
+import { newPaymentRouter, showPaymentRouter } from './routes';
 
 const app = express();
 
@@ -25,6 +25,7 @@ app.use(currentUserMiddleware);
 
 // Route handlers
 app.use(newPaymentRouter);
+app.use(showPaymentRouter);
 
 // Middlewares after route handlers
 app.all('*', () => {
