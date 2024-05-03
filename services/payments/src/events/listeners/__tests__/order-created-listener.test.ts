@@ -2,7 +2,7 @@ import { OrderCreatedEvent, OrderStatus } from '@b.anik/common';
 import mongoose from 'mongoose';
 import { OrderCreatedListener } from '../order-created-listener';
 import { natsWrapper } from '../../../nats-wrapper';
-import { Order, OrderDoc } from '../../../models/order';
+import { Order, OrderDoc } from '../../../models';
 
 describe('OrderCreatedListener', () => {
   let listener: OrderCreatedListener;

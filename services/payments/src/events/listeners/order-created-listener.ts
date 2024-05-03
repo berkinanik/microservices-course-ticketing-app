@@ -1,6 +1,6 @@
 import { Listener, OrderCreatedEvent, Subjects } from '@b.anik/common';
 import { queueGroupName } from './queue-group-name';
-import { Order } from '../../models/order';
+import { Order } from '../../models';
 
 export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
   readonly subject = Subjects.OrderCreated;
@@ -16,6 +16,8 @@ export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
           status: data.status,
         });
         await order.save();
+
+        // TODO - Emit an event to update the order status to OrderStatus.AwaitingPayment
 
         resolve();
       } catch (error) {

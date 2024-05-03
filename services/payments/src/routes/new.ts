@@ -8,7 +8,7 @@ import {
   requireAuthMiddleware,
   validateRequestMiddleware,
 } from '@b.anik/common';
-import { Order, OrderDoc } from '../models/order';
+import { Order, OrderDoc } from '../models';
 import { stripe } from '../stripe';
 
 const router = express.Router();

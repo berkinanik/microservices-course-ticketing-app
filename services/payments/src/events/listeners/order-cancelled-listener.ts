@@ -1,6 +1,6 @@
 import { Listener, OrderCancelledEvent, OrderStatus, Subjects } from '@b.anik/common';
 import { queueGroupName } from './queue-group-name';
-import { Order } from '../../models/order';
+import { Order } from '../../models';
 
 export class OrderCancelledListener extends Listener<OrderCancelledEvent> {
   readonly subject = Subjects.OrderCancelled;

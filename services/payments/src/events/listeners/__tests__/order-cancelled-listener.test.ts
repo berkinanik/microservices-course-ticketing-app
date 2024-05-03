@@ -1,6 +1,6 @@
 import { OrderCancelledEvent, OrderStatus } from '@b.anik/common';
 import { OrderCancelledListener } from '../order-cancelled-listener';
-import { Order, OrderDoc } from '../../../models/order';
+import { Order, OrderDoc } from '../../../models';
 import { natsWrapper } from '../../../nats-wrapper';
 import mongoose from 'mongoose';
 

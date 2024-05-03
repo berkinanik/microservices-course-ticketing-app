@@ -1,7 +1,7 @@
 import request from 'supertest';
 import { app } from '../../app';
 import { getCookieHeader } from '../../test/utils';
-import { Order, OrderDoc } from '../../models/order';
+import { Order, OrderDoc } from '../../models';
 import mongoose from 'mongoose';
 import { OrderStatus } from '@b.anik/common';
 import { stripe } from '../../stripe';
