@@ -32,7 +32,7 @@ spec:
                 fieldRef:
                   fieldPath: metadata.name
             - name: STRIPE_KEY
-              valuesFrom:
+              valueFrom:
                 secretKeyRef:
                   name: stripe-secret
                   key: STRIPE_KEY
