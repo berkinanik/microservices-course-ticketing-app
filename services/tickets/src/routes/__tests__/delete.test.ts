@@ -1,6 +1,6 @@
 import request from 'supertest';
 import mongoose from 'mongoose';
-import { TicketDoc } from '../../models';
+import { Ticket, TicketDoc } from '../../models';
 import { getCookieHeader } from '../../test/utils';
 import { app } from '../../app';
 
@@ -14,17 +14,13 @@ describe('delete', () => {
   beforeEach(async () => {
     const cookie = getCookieHeader();
 
-    await requestAgent
-      .post(apiRoute)
-      .set('Cookie', cookie)
-      .send({
-        title: 'ticket-does-exist',
-        price: 30,
-      })
-      .expect(201)
-      .then((res) => {
-        existingTicket = res.body.ticket;
-      });
+    existingTicket = await Ticket.build({
+      title: 'concert',
+      price: 20,
+      userId: 'user-id-123',
+    }).save();
+
+    requestAgent.set('Cookie', cookie);
   });
 
   it('should get a 401 if the user is not authenticated', async () => {
@@ -52,6 +48,13 @@ describe('delete', () => {
       )
       .send()
       .expect(401);
+  });
+
+  it('should return a 400 if the ticket is reserved', async () => {
+    existingTicket.set({ orderId: new mongoose.Types.ObjectId().toHexString() });
+    await existingTicket.save();
+
+    return requestAgent.delete(`${apiRoute}/${existingTicket.id}`).send().expect(400);
   });
 
   it('should delete the ticket', async () => {

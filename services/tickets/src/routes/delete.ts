@@ -1,6 +1,11 @@
-import { NotAuthorizedError, NotFoundError, requireAuthMiddleware } from '@b.anik/common';
+import {
+  BadRequestError,
+  NotAuthorizedError,
+  NotFoundError,
+  requireAuthMiddleware,
+} from '@b.anik/common';
 import express from 'express';
-import mongoose, { isValidObjectId } from 'mongoose';
+import { isValidObjectId } from 'mongoose';
 import { Ticket, TicketDoc } from '../models';
 
 const router = express.Router();
@@ -20,6 +25,10 @@ router.delete('/api/tickets/:id', requireAuthMiddleware, async (req, res) => {
 
   if (ticket.userId !== req.currentUser!.id) {
     throw new NotAuthorizedError();
+  }
+
+  if (ticket.orderId) {
+    throw new BadRequestError('Cannot delete a reserved ticket');
   }
 
   const deletedTicket = await Ticket.findOneAndDelete({
