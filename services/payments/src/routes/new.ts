@@ -57,7 +57,7 @@ router.post(
       orderId: payment.order.id,
     });
 
-    return res.status(201).send({ success: true });
+    return res.status(201).send({ success: true, payment });
   },
 );
 

@@ -91,6 +91,19 @@ describe('new', () => {
     });
   });
 
+  it('should return 201 with the payment details if the payment is successful', async () => {
+    return requestAgent
+      .post(apiRoute)
+      .send({ token, orderId: order.id })
+      .expect(201)
+      .then((response) => {
+        expect(response.body.success).toBeTruthy();
+        expect(response.body.payment).toBeDefined();
+        expect(response.body.payment.stripeId).toEqual('stripe-id');
+        expect(response.body.payment.order.id).toEqual(order.id);
+      });
+  });
+
   it('should return 400 if the payment fails', async () => {
     const spy = jest
       .spyOn(stripe.charges, 'create')
