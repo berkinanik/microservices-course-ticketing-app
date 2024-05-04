@@ -39,6 +39,10 @@ router.patch(
       throw new BadRequestError('Order is already cancelled');
     }
 
+    if (order.status === OrderStatus.Complete) {
+      throw new BadRequestError('Order is already completed');
+    }
+
     order.status = OrderStatus.Cancelled;
     await order.save();
 

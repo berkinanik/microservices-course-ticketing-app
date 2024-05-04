@@ -97,6 +97,32 @@ describe('cancel', () => {
     return requestAgent.patch(getApiRoute(anotherOrder.id)).send().expect(401);
   });
 
+  it('should return 400 if the order is already completed', async () => {
+    const ticket = Ticket.build({
+      id: new mongoose.Types.ObjectId().toHexString(),
+      title: 'Concert',
+      price: 20,
+      version: 0,
+    });
+    await ticket.save();
+
+    const order = Order.build({
+      userId: 'user-id-123',
+      status: OrderStatus.Complete,
+      expiresAt: new Date(),
+      ticket,
+    });
+    await order.save();
+
+    return requestAgent
+      .patch(getApiRoute(order.id))
+      .send()
+      .expect(400)
+      .then((response) => {
+        expect(response.body.errors[0].message).toMatch(/Order is already completed/i);
+      });
+  });
+
   it('should cancel the order', async () => {
     const ticket = Ticket.build({
       id: new mongoose.Types.ObjectId().toHexString(),
