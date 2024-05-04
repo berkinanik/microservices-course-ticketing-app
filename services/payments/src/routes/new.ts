@@ -10,7 +10,7 @@ import {
 } from '@b.anik/common';
 import { Order, OrderDoc, Payment } from '../models';
 import { stripe } from '../stripe';
-import { PaymentCompletePublisher } from '../events/publishers/payment-complete-publisher';
+import { PaymentCompletePublisher } from '../events/publishers';
 import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();

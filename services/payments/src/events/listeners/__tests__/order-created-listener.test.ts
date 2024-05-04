@@ -47,4 +47,16 @@ describe('OrderCreatedListener', () => {
         expect(false).toBeTruthy();
       });
   });
+
+  it('should publish a PaymentAwaited event', async () => {
+    const spy = jest.spyOn(natsWrapper.client, 'publish');
+
+    await listener.onMessage(data);
+
+    expect(spy).toHaveBeenCalled();
+    const eventName = spy.mock.calls[0][0];
+    const eventData = JSON.parse(spy.mock.calls[0][1] as string);
+    expect(eventName).toBe('payment:awaited');
+    expect(eventData).toEqual({ orderId: data.id });
+  });
 });

@@ -1,6 +1,7 @@
 import { Listener, OrderCreatedEvent, Subjects } from '@b.anik/common';
 import { queueGroupName } from './queue-group-name';
 import { Order } from '../../models';
+import { PaymentAwaitedPublisher } from '../publishers';
 
 export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
   readonly subject = Subjects.OrderCreated;
@@ -17,7 +18,9 @@ export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
         });
         await order.save();
 
-        // TODO - Emit an event to update the order status to OrderStatus.AwaitingPayment
+        await new PaymentAwaitedPublisher(this.client).publish({
+          orderId: order.id,
+        });
 
         resolve();
       } catch (error) {
