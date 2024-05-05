@@ -16,7 +16,7 @@ export default async function OrdersPage() {
 
   return (
     <div>
-      <h1 className="text-lg font-bold">Orders</h1>
+      <h1 className="mb-2 text-lg font-bold">Orders</h1>
       <div className="flex flex-col items-stretch gap-2">
         {orders.length ? (
           orders.map((order) => (
