@@ -2,7 +2,10 @@
 
 import { useEffect, useState } from 'react';
 
+import { useRouter } from 'next/navigation';
+
 export const ExpirationTimer = ({ expiresAt }: { expiresAt: string }) => {
+  const router = useRouter();
   const [timeLeft, setTimeLeft] = useState<number>();
 
   useEffect(() => {
@@ -12,6 +15,10 @@ export const ExpirationTimer = ({ expiresAt }: { expiresAt: string }) => {
       if (newTimeLeft <= 0) {
         clearInterval(interval);
         setTimeLeft(0);
+
+        setTimeout(() => {
+          router.refresh();
+        }, 1000);
       } else {
         setTimeLeft(newTimeLeft);
       }
@@ -29,10 +36,10 @@ export const ExpirationTimer = ({ expiresAt }: { expiresAt: string }) => {
     <div>
       {timeLeft > 0 ? (
         <p>
-          Expires in <b>{timeLeft}</b> seconds
+          Expires in <b className="font-mono">{timeLeft}</b> seconds
         </p>
       ) : (
-        <p>Expired</p>
+        <p className="italic">Expired</p>
       )}
     </div>
   ) : null;
