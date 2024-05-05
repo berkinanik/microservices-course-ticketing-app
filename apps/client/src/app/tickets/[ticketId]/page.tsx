@@ -6,6 +6,7 @@ import { PurchaseButton } from './PurchaseButton';
 
 import { type Order, type OrderResponse, type TicketResponse } from '~/@types';
 import { buildClientServer } from '~/http';
+import { formatPrice } from '~/utils';
 
 export default async function TicketPage({
   params: { ticketId },
@@ -40,7 +41,11 @@ export default async function TicketPage({
         <PurchaseButton ticketId={ticket.id} disabled={!!ticket.orderId} />
       </div>
 
-      {!order ? <p>Reserve your seat now only for ${ticket.price}</p> : <p>${ticket.price}</p>}
+      {!order ? (
+        <p>Reserve your seat now only for {formatPrice(ticket.price)}</p>
+      ) : (
+        <p>{formatPrice(ticket.price)}</p>
+      )}
 
       {!!order && <OrderInfo order={order} />}
     </div>
