@@ -15,6 +15,12 @@ spec:
       containers:
         - name: client
           image: berkinanik/client:latest
+          env:
+            - name: STRIPE_CLIENT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: stripe-client-secret
+                  key: STRIPE_CLIENT_KEY
 ---
 apiVersion: v1
 kind: Service
