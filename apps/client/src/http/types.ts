@@ -11,10 +11,12 @@ type CommonErrorResponse = {
   status: number;
   ok: false;
   data?: never;
-  errors: {
-    message: string;
-    field?: string;
-  }[];
+  errors: CommonError[];
+};
+
+export type CommonError = {
+  message: string;
+  field?: string;
 };
 
 export type CommonResponse<T> = CommonSuccessResponse<T> | CommonErrorResponse;

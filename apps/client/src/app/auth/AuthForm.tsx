@@ -6,6 +6,7 @@ import { toast } from 'sonner';
 
 import { Button } from '~/components';
 import { buildClient } from '~/http';
+import { toastErrors } from '~/utils';
 
 interface Props {
   action: 'signUp' | 'signIn';
@@ -41,9 +42,7 @@ export const AuthForm: React.FC<Props> = ({ action }) => {
           router.push('/');
           router.refresh();
         } else {
-          for (const error of res.errors) {
-            toast.error(`${error.field ? `Error in ${error.field}:<br />` : ''}${error.message}`);
-          }
+          toastErrors(res.errors);
         }
       });
   };
