@@ -4,6 +4,7 @@ import { headers } from 'next/headers';
 
 import { Toaster } from 'sonner';
 
+import { type CurrentUserResponse } from '~/@types';
 import { Navbar } from '~/components';
 import { buildClientServer } from '~/http';
 
@@ -23,9 +24,7 @@ export default async function RootLayout({
 }>) {
   const client = buildClientServer(headers);
   const currentUser = await client
-    .get<{
-      currentUser: { id: string; email: string } | null;
-    }>('/api/users/current-user')
+    .get<CurrentUserResponse>('/api/users/current-user')
     .then((res) => (res.ok ? res.data.currentUser : null));
 
   return (
