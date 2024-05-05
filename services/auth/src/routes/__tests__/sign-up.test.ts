@@ -1,10 +1,10 @@
 import request from 'supertest';
 import { app } from '../../app';
 
-describe('signup', () => {
-  const apiRoute = '/api/users/signup';
+describe('signUp', () => {
+  const apiRoute = '/api/users/sign-up';
 
-  it('returns a 201 on successful signup', async () => {
+  it('returns a 201 on successful signUp', async () => {
     return request(app)
       .post(apiRoute)
       .send({
@@ -60,7 +60,7 @@ describe('signup', () => {
       .expect(400);
   });
 
-  it('sets a cookie after successful signup', async () => {
+  it('sets a cookie after successful signUp', async () => {
     const response = await request(app)
       .post(apiRoute)
       .send({

@@ -1,23 +1,23 @@
 import request from 'supertest';
 import { app } from '../../app';
-import { signout, signup } from '../../test/utils';
+import { signOut, signUp } from '../../test/utils';
 
-describe('signin', () => {
-  const apiRoute = '/api/users/signin';
+describe('signIn', () => {
+  const apiRoute = '/api/users/sign-in';
 
   const requestAgent = request.agent(app);
 
   beforeEach(async () => {
-    await signup(requestAgent);
+    await signUp(requestAgent);
 
-    await signout(requestAgent, 200);
+    await signOut(requestAgent, 200);
   });
 
   afterEach(async () => {
-    await signout(requestAgent);
+    await signOut(requestAgent);
   });
 
-  it('returns a 200 on successful signin', async () => {
+  it('returns a 200 on successful signIn', async () => {
     return requestAgent
       .post(apiRoute)
       .send({
@@ -65,7 +65,7 @@ describe('signin', () => {
     return requestAgent.post(apiRoute).send().expect(400);
   });
 
-  it('sets a cookie after successful signin', async () => {
+  it('sets a cookie after successful signIn', async () => {
     const response = await requestAgent
       .post(apiRoute)
       .send({

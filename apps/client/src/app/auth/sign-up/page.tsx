@@ -1,7 +1,7 @@
 import { AuthForm } from '../AuthForm';
 
 const SignUpPage = () => {
-  return <AuthForm action="signup" />;
+  return <AuthForm action="signUp" />;
 };
 
 export default SignUpPage;

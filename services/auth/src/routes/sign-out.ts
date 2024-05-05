@@ -4,7 +4,7 @@ import { requireAuthMiddleware } from '@b.anik/common';
 
 const router = express.Router();
 
-router.post('/api/users/signout', requireAuthMiddleware, (req, res) => {
+router.post('/api/users/sign-out', requireAuthMiddleware, (req, res) => {
   req.session = null;
 
   return res.send({});

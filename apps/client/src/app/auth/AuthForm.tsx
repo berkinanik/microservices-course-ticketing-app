@@ -8,7 +8,7 @@ import { Button } from '~/components';
 import { buildClient } from '~/http';
 
 interface Props {
-  action: 'signup' | 'signin';
+  action: 'signUp' | 'signIn';
 }
 
 export const AuthForm: React.FC<Props> = ({ action }) => {
@@ -36,7 +36,7 @@ export const AuthForm: React.FC<Props> = ({ action }) => {
       .then((res) => {
         if (res.ok) {
           toast.success(
-            action === 'signup' ? 'Account created successfully!' : 'Signed in successfully!',
+            action === 'signUp' ? 'Account created successfully!' : 'Signed in successfully!',
           );
           router.push('/');
           router.refresh();
@@ -50,7 +50,7 @@ export const AuthForm: React.FC<Props> = ({ action }) => {
 
   return (
     <form className="flex flex-col items-start gap-4" onSubmit={handleSubmit}>
-      <h1 className="text-xl font-medium">{action === 'signin' ? 'Sign In' : 'Sign Up'}</h1>
+      <h1 className="text-xl font-medium">{action === 'signIn' ? 'Sign In' : 'Sign Up'}</h1>
       <span className="h-[1px] w-full bg-black" />
       <div className="flex w-[320px] flex-col gap-2">
         <label htmlFor="email" className="text-sm font-light">
@@ -78,7 +78,7 @@ export const AuthForm: React.FC<Props> = ({ action }) => {
           required
         />
       </div>
-      <Button type="submit">{action === 'signin' ? 'Sign In' : 'Sign Up'}</Button>
+      <Button type="submit">{action === 'signIn' ? 'Sign In' : 'Sign Up'}</Button>
     </form>
   );
 };

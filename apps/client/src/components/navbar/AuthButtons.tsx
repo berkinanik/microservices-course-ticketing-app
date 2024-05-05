@@ -16,9 +16,9 @@ export const AuthButtons: React.FC<Props> = ({ currentUser }) => {
   const client = buildClient();
   const router = useRouter();
 
-  const handleSignout = async () => {
+  const handleSignOut = async () => {
     await client
-      .post('/api/users/signout')
+      .post('/api/users/sign-out')
       .then(() => {
         toast.success('Signed out successfully!');
         router.push('/');
@@ -34,16 +34,16 @@ export const AuthButtons: React.FC<Props> = ({ currentUser }) => {
       {currentUser ? (
         <>
           <li>
-            <button onClick={handleSignout}>Sign out</button>
+            <button onClick={handleSignOut}>Sign out</button>
           </li>
         </>
       ) : (
         <>
           <li>
-            <Link href="/auth/signup">Sign Up</Link>
+            <Link href="/auth/sign-up">Sign Up</Link>
           </li>
           <li>
-            <Link href="/auth/signin">Sign In</Link>
+            <Link href="/auth/sign-in">Sign In</Link>
           </li>
         </>
       )}

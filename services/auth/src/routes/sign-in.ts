@@ -10,7 +10,7 @@ import { Password } from '../services';
 const router = express.Router();
 
 router.post(
-  '/api/users/signin',
+  '/api/users/sign-in',
   body('email').trim().isEmail().withMessage('Email must be valid'),
   body('password').trim().notEmpty().withMessage('Password must be provided'),
   validateRequestMiddleware,

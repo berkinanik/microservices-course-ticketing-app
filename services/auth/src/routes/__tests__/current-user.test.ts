@@ -1,6 +1,6 @@
 import request from 'supertest';
 import { app } from '../../app';
-import { signup } from '../../test/utils';
+import { signUp } from '../../test/utils';
 
 describe('current-user', () => {
   const apiRoute = '/api/users/current-user';
@@ -14,7 +14,7 @@ describe('current-user', () => {
   });
 
   it('returns a 200 and removes cookie', async () => {
-    await signup(requestAgent);
+    await signUp(requestAgent);
 
     const response = await requestAgent.get(apiRoute).send().expect(200);
 

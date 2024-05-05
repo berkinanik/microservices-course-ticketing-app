@@ -9,7 +9,7 @@ import { User } from '../models';
 const router = express.Router();
 
 router.post(
-  '/api/users/signup',
+  '/api/users/sign-up',
   body('email').trim().isEmail().withMessage('Email must be valid'),
   body('password')
     .trim()
