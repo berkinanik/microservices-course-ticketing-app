@@ -23,9 +23,11 @@ export default async function Home() {
 
       <ul className="flex flex-row flex-wrap justify-start gap-4">
         {tickets.map((ticket) => (
-          <li key={ticket.id} className="rounded-md border p-4">
-            <TicketCard ticket={ticket} />
-          </li>
+          <Link key={ticket.id} href={`/tickets/${ticket.id}`}>
+            <li className="rounded-md border p-4">
+              <TicketCard ticket={ticket} />
+            </li>
+          </Link>
         ))}
       </ul>
     </div>

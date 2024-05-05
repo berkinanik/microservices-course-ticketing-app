@@ -10,3 +10,7 @@ export interface Ticket {
 export interface TicketsResponse {
   tickets: Ticket[];
 }
+
+export interface TicketResponse {
+  ticket: Ticket;
+}
