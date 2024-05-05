@@ -30,7 +30,7 @@ export const AuthForm: React.FC<Props> = ({ action }) => {
           id: string;
           email: string;
         };
-      }>(`/api/users/${action}`, {
+      }>(`/api/users/${action === 'signIn' ? 'sign-in' : 'sign-up'}`, {
         email,
         password,
       })
