@@ -22,7 +22,7 @@ export const OrderInfo: React.FC<Props> = ({ order }) => {
       {order.status === OrderStatus.AwaitingPayment && (
         <>
           <p>Your order (#{order.id}) is awaiting payment.</p>
-          {order.expiresAt && <ExpirationTimer expiresAt={order.expiresAt} />}
+          {order.expiresAt && <ExpirationTimer expiresAt={order.expiresAt} isRefreshEnabled />}
           <Link href={`/orders/${order.id}`}>
             <Button>Pay now</Button>
           </Link>

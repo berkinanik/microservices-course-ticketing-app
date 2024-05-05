@@ -35,7 +35,9 @@ export default async function OrdersPage() {
 
               {order.status === OrderStatus.AwaitingPayment && (
                 <div className="flex flex-col items-end justify-end gap-2">
-                  {order.expiresAt && <ExpirationTimer expiresAt={order.expiresAt} />}
+                  {order.expiresAt && (
+                    <ExpirationTimer expiresAt={order.expiresAt} isRefreshEnabled />
+                  )}
 
                   <Link href={`/orders/${order.id}`}>
                     <Button>Pay now</Button>

@@ -4,7 +4,13 @@ import { useEffect, useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
-export const ExpirationTimer = ({ expiresAt }: { expiresAt: string }) => {
+export const ExpirationTimer = ({
+  expiresAt,
+  isRefreshEnabled = false,
+}: {
+  expiresAt: string;
+  isRefreshEnabled?: boolean;
+}) => {
   const router = useRouter();
   const [timeLeft, setTimeLeft] = useState<number>();
 
@@ -16,9 +22,11 @@ export const ExpirationTimer = ({ expiresAt }: { expiresAt: string }) => {
         clearInterval(interval);
         setTimeLeft(0);
 
-        setTimeout(() => {
-          router.refresh();
-        }, 1000);
+        if (isRefreshEnabled) {
+          setTimeout(() => {
+            router.refresh();
+          }, 1000);
+        }
       } else {
         setTimeLeft(newTimeLeft);
       }
@@ -32,15 +40,19 @@ export const ExpirationTimer = ({ expiresAt }: { expiresAt: string }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [expiresAt]);
 
-  return expiresAt && typeof timeLeft === 'number' ? (
-    <div>
-      {timeLeft > 0 ? (
-        <p>
-          Expires in <b className="font-mono">{timeLeft}</b> seconds
-        </p>
-      ) : (
-        <p className="italic">Expired</p>
-      )}
-    </div>
+  return expiresAt ? (
+    typeof timeLeft === 'number' ? (
+      <div>
+        {timeLeft > 0 ? (
+          <p>
+            Expires in <b className="font-mono">{timeLeft}</b> seconds
+          </p>
+        ) : (
+          <p className="italic">Expired</p>
+        )}
+      </div>
+    ) : (
+      <span className="italic">Loading...</span>
+    )
   ) : null;
 };
