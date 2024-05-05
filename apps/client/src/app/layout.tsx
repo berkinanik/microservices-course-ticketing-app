@@ -4,10 +4,8 @@ import { headers } from 'next/headers';
 
 import { Toaster } from 'sonner';
 
-import { type CurrentUserResponse } from '~/@types';
 import { Navbar } from '~/components';
-import { buildClientServer } from '~/http';
-
+import { getCurrentUser } from '~/services';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -22,10 +20,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const client = buildClientServer(headers);
-  const currentUser = await client
-    .get<CurrentUserResponse>('/api/users/current-user')
-    .then((res) => (res.ok ? res.data.currentUser : null));
+  const currentUser = await getCurrentUser(headers);
 
   return (
     <html lang="en">
