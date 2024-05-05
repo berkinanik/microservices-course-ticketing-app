@@ -4,7 +4,7 @@ export interface Order {
   id: string;
   userId: string;
   status: OrderStatus;
-  expiresAt?: Date;
+  expiresAt?: string;
   ticket: {
     id: string;
     price: number;

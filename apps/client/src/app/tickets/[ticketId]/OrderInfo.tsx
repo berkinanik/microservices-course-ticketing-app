@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { type Order } from '~/@types';
-import { Button } from '~/components';
+import { Button, ExpirationTimer } from '~/components';
 import { OrderStatus } from '~/constants';
 
 interface Props {
@@ -21,8 +21,8 @@ export const OrderInfo: React.FC<Props> = ({ order }) => {
 
       {order.status === OrderStatus.AwaitingPayment && (
         <>
-          <p>Your order is awaiting payment.</p>
-          {/* TODO expiration timer */}
+          <p>Your order (#{order.id}) is awaiting payment.</p>
+          {order.expiresAt && <ExpirationTimer expiresAt={order.expiresAt} />}
           <Link href={`/orders/${order.id}`}>
             <Button>Pay now</Button>
           </Link>
