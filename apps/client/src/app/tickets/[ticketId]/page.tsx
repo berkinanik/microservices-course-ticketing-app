@@ -1,10 +1,12 @@
 import { headers } from 'next/headers';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { OrderInfo } from './OrderInfo';
 import { PurchaseButton } from './PurchaseButton';
 
 import { type Order, type OrderResponse, type TicketResponse } from '~/@types';
+import { Button } from '~/components';
 import { buildClientServer } from '~/http';
 import { formatPrice } from '~/utils';
 
@@ -41,10 +43,20 @@ export default async function TicketPage({
         <PurchaseButton ticketId={ticket.id} disabled={!!ticket.orderId} />
       </div>
 
-      {!order ? (
+      {!ticket.orderId ? (
         <p>Reserve your seat now only for {formatPrice(ticket.price)}</p>
       ) : (
         <p>{formatPrice(ticket.price)}</p>
+      )}
+
+      {ticket.orderId && !order && (
+        <>
+          <p>This ticket is already reserved</p>
+
+          <Link href="/">
+            <Button>Find some other tickets</Button>
+          </Link>
+        </>
       )}
 
       {!!order && <OrderInfo order={order} />}
