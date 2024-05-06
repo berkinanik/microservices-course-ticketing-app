@@ -14,17 +14,11 @@ permissions:
   contents: read
 
 jobs:
-  cache-and-install:
-    name: Cache and Install
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
 
       - uses: pnpm/action-setup@v3
         name: Install pnpm
@@ -32,8 +26,23 @@ jobs:
           version: 9
           run_install: false
 
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Load MongoDB binary cache
+        id: cache-mongodb-binaries
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/mongodb-binaries
+          key: mongodb-binaries-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            mongodb-binaries-${{ runner.os }}-
+
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Run typecheck
         run: pnpm typecheck
