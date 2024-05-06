@@ -15,6 +15,7 @@ permissions:
 
 jobs:
   test:
+    name: Install and test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
