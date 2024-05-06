@@ -15,17 +15,13 @@ describe('update', () => {
   beforeEach(async () => {
     const cookie = getCookieHeader();
 
-    await requestAgent
-      .post(apiRoute)
-      .set('Cookie', cookie)
-      .send({
-        title: 'ticket-does-exist',
-        price: 30,
-      })
-      .expect(201)
-      .then((res) => {
-        ticket = res.body.ticket;
-      });
+    ticket = await Ticket.build({
+      title: 'concert',
+      price: 20,
+      userId: 'user-id-123',
+    }).save();
+
+    requestAgent.set('Cookie', cookie);
   });
 
   it('should get a 401 if the user is not authenticated', async () => {
