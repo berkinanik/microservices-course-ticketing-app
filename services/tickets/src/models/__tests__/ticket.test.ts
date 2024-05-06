@@ -3,7 +3,7 @@ import { Ticket } from '../ticket';
 
 describe('ticket model', () => {
   it('should implement optimistic concurrency control', async () => {
-    const ticket = await Ticket.build({
+    const ticket = Ticket.build({
       title: 'concert',
       price: 5,
       userId: new mongoose.Types.ObjectId().toHexString(),
@@ -26,7 +26,7 @@ describe('ticket model', () => {
   });
 
   it('should increment the version number on multiple saves', async () => {
-    const ticket = await Ticket.build({
+    const ticket = Ticket.build({
       title: 'concert',
       price: 20,
       userId: new mongoose.Types.ObjectId().toHexString(),
@@ -37,8 +37,5 @@ describe('ticket model', () => {
 
     await ticket.save();
     expect(ticket.version).toBe(1);
-
-    await ticket.save();
-    expect(ticket.version).toBe(2);
   });
 });

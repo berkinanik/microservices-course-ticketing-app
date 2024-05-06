@@ -1,7 +1,6 @@
 import request from 'supertest';
 import { app } from '../../app';
-import { getCookieHeader } from '../../test/utils';
-import { TicketDoc } from '../../models';
+import { Ticket, TicketDoc } from '../../models';
 
 describe('show', () => {
   const apiRoute = '/api/tickets';
@@ -11,19 +10,11 @@ describe('show', () => {
   let existingTicket: TicketDoc;
 
   beforeEach(async () => {
-    const cookie = getCookieHeader();
-
-    await requestAgent
-      .post(apiRoute)
-      .set('Cookie', cookie)
-      .send({
-        title: 'ticket-does-exist',
-        price: 30,
-      })
-      .expect(201)
-      .then((res) => {
-        existingTicket = res.body.ticket;
-      });
+    existingTicket = await Ticket.build({
+      userId: 'user-id-123',
+      title: 'ticket-does-exist',
+      price: 30,
+    }).save();
   });
 
   describe('get one ticket', () => {
