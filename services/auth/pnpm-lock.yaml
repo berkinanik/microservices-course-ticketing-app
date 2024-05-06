@@ -86,7 +86,7 @@ importers:
     devDependencies:
       '@pnpm/make-dedicated-lockfile':
         specifier: ^0.6.3
-        version: 0.6.3
+        version: 0.6.4
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
@@ -443,8 +443,8 @@ packages:
     resolution: {integrity: sha512-QzmNiLShTnNyeTHr+cykG5hYjwph0+v49KHV36Dh8uA2rRMWw30qoZMARuxd00SYdoTwT8bIouqqmzi6TWfJHQ==}
     engines: {node: '>=10'}
 
-  '@pnpm/lockfile-file@9.0.3':
-    resolution: {integrity: sha512-UrB+BKZFHuoULij3x/rv7UrV4Om5cINZVoTXhZGv5V3cydFfgOpfG5x44HSrifbUnQjuPfat23U3GXuGw8q3oA==}
+  '@pnpm/lockfile-file@9.0.4':
+    resolution: {integrity: sha512-WkiHN0UegyBB5hsLxEcbqrwJodcCpT1aA37Ngv/lWXWXWv0F0gL3mas4SltVqdVLV5pl5CoujThrzWOhWKD1kw==}
     engines: {node: '>=18.12'}
     peerDependencies:
       '@pnpm/logger': ^5.0.0
@@ -453,16 +453,16 @@ packages:
     resolution: {integrity: sha512-a4/ULIPLZIIq8Qmi2HEoFgRTtEouGU5RNhuGDxnSmkxu1BjlNMNjLJeEI5jzMZCGOjBoML+AirY/XOO3bcEQ/w==}
     engines: {node: '>=18.12'}
 
-  '@pnpm/lockfile-utils@10.1.0':
-    resolution: {integrity: sha512-YDH1uBBQPev1thn4swbQnzSeJ9WGC76JgCldLGURjlpmeA9v7G8TUK2nx7k1lngkx6B9GgOUijOPVcYGlOJ+Qg==}
+  '@pnpm/lockfile-utils@10.1.1':
+    resolution: {integrity: sha512-Zl5S1WW3Fk8SFjzjuV8jog7VYtPC+RMcsLpvmgFUDyMy/IRG1x2vQ7m3BY1SpmfRLf4XqxACRwKBlbjlRrVY4Q==}
     engines: {node: '>=18.12'}
 
   '@pnpm/logger@5.0.0':
     resolution: {integrity: sha512-YfcB2QrX+Wx1o6LD1G2Y2fhDhOix/bAY/oAnMpHoNLsKkWIRbt1oKLkIFvxBMzLwAEPqnYWguJrYC+J6i4ywbw==}
     engines: {node: '>=12.17'}
 
-  '@pnpm/make-dedicated-lockfile@0.6.3':
-    resolution: {integrity: sha512-KJi6bP9xwdWVPStJVjRPqEbflrSldNzqbWDcWp80hEbftPtn58OtOYtUygvgy/q+rBA0L2wbjxjqqm/GzRhMTA==}
+  '@pnpm/make-dedicated-lockfile@0.6.4':
+    resolution: {integrity: sha512-WAbMpwen+DRcAc7TKUS4uLVrSqLzHQW6SMD3L+X7Na/bFc+gJVW/OvgmzwzebFLZw2U+EyCijlRVCIObi8RUVQ==}
     engines: {node: '>=18.12'}
     hasBin: true
 
@@ -3177,7 +3177,7 @@ snapshots:
     dependencies:
       lru-cache: 6.0.0
 
-  '@pnpm/lockfile-file@9.0.3(@pnpm/logger@5.0.0)':
+  '@pnpm/lockfile-file@9.0.4(@pnpm/logger@5.0.0)':
     dependencies:
       '@pnpm/constants': 8.0.0
       '@pnpm/dependency-path': 4.0.0
@@ -3185,7 +3185,7 @@ snapshots:
       '@pnpm/git-resolver': 9.0.1(@pnpm/logger@5.0.0)
       '@pnpm/git-utils': 2.0.0
       '@pnpm/lockfile-types': 6.0.0
-      '@pnpm/lockfile-utils': 10.1.0
+      '@pnpm/lockfile-utils': 10.1.1
       '@pnpm/logger': 5.0.0
       '@pnpm/merge-lockfile-changes': 6.0.0
       '@pnpm/types': 10.0.0
@@ -3207,7 +3207,7 @@ snapshots:
     dependencies:
       '@pnpm/types': 10.0.0
 
-  '@pnpm/lockfile-utils@10.1.0':
+  '@pnpm/lockfile-utils@10.1.1':
     dependencies:
       '@pnpm/dependency-path': 4.0.0
       '@pnpm/lockfile-types': 6.0.0
@@ -3222,13 +3222,13 @@ snapshots:
       bole: 5.0.12
       ndjson: 2.0.0
 
-  '@pnpm/make-dedicated-lockfile@0.6.3':
+  '@pnpm/make-dedicated-lockfile@0.6.4':
     dependencies:
       '@pnpm/error': 6.0.0
       '@pnpm/exec': 2.0.0
       '@pnpm/exportable-manifest': 6.0.0
       '@pnpm/find-workspace-dir': 7.0.0
-      '@pnpm/lockfile-file': 9.0.3(@pnpm/logger@5.0.0)
+      '@pnpm/lockfile-file': 9.0.4(@pnpm/logger@5.0.0)
       '@pnpm/logger': 5.0.0
       '@pnpm/prune-lockfile': 6.0.1
       '@pnpm/read-project-manifest': 6.0.0
