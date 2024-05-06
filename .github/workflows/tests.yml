@@ -14,8 +14,8 @@ permissions:
   contents: read
 
 jobs:
-  cache-install-and-test:
-    name: Cache, Install and Test
+  cache-and-install:
+    name: Cache and Install
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -48,5 +48,18 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run tests
-        run: pnpm test:ci
+  typecheck:
+    name: Typecheck
+    runs-on: ubuntu-latest
+    needs: cache-and-install
+    steps:
+      - name: typecheck
+        run: pnpm typecheck
+
+  run-tests:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    needs: [cache-and-install, typecheck]
+    steps:
+      - name: run tests
+        run: pnpm test
