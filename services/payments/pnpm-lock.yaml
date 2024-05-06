@@ -84,9 +84,6 @@ importers:
       '@pnpm/make-dedicated-lockfile':
         specifier: ^0.6.3
         version: 0.6.4
-      '@shelf/jest-mongodb':
-        specifier: ^4.3.1
-        version: 4.3.1(jest-environment-node@29.7.0)(mongodb@6.5.0(socks@2.8.3))
       '@types/jest':
         specifier: ^29.5.12
         version: 29.5.12
@@ -535,13 +532,6 @@ packages:
   '@pnpm/write-project-manifest@6.0.0':
     resolution: {integrity: sha512-DTjuH7Ls4v8CpfvOCtZkIIySpEKPGh7hEUpH5tqvVblzWQwfheoHfeBvyjGo975lvHsR2bCt2s8F7bv6DQ8o8g==}
     engines: {node: '>=18.12'}
-
-  '@shelf/jest-mongodb@4.3.1':
-    resolution: {integrity: sha512-Gu67GJkct/eOzLB4mr5owPtBU/T6cR3pVe8kIFFCZRYUSXs39Gzb7CFJoGhzmKxLkJwk1A6UbUwSR0S+BCGywQ==}
-    engines: {node: '>=16'}
-    peerDependencies:
-      jest-environment-node: 28.x || 29.x
-      mongodb: 3.x.x || 4.x || 5.x || 6.x
 
   '@sinclair/typebox@0.27.8':
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
@@ -1142,9 +1132,6 @@ packages:
   fb-watchman@2.0.2:
     resolution: {integrity: sha512-p5161BqbuCaSnB8jIbzQHOlpgsPmK5rJVDfDKO91Axs5NC1uu3HRQm6wt9cd9/+GtQQIO53JdGXXoyDpTAsgYA==}
 
-  fd-slicer@1.1.0:
-    resolution: {integrity: sha512-cE1qsB/VwyQozZ+q1dGxR8LBYNZeofhEdUNGSMbQD3Gw2lAzX9Zb3uIU6Ebc/Fmyjo9AWWfnn0AUCHqtevs/8g==}
-
   fetch-blob@2.1.2:
     resolution: {integrity: sha512-YKqtUDwqLyfyMnmbw8XD6Q8j9i/HggKtPEI+pZ1+8bvheBu78biSmNaXWusx1TauGqtUUGx/cBb1mKdq2rLYow==}
     engines: {node: ^10.17.0 || >=12.3.0}
@@ -1723,16 +1710,8 @@ packages:
   mongodb-connection-string-url@3.0.0:
     resolution: {integrity: sha512-t1Vf+m1I5hC2M5RJx/7AtxgABy1cZmIPQRMXw+gEIPn/cZNF3Oiy+l0UIypUwVB5trcWHq3crg2g3uAR9aAwsQ==}
 
-  mongodb-memory-server-core@9.1.1:
-    resolution: {integrity: sha512-5toYR4A7DfV5k+Qf6L9FG86baID2rPP/JYwp8TPrdm8ZzfTfyHTwQwa2BzVpSwmLoVW5gXN0znYmXiE68mImMg==}
-    engines: {node: '>=14.20.1'}
-
   mongodb-memory-server-core@9.2.0:
     resolution: {integrity: sha512-9SWZEy+dGj5Fvm5RY/mtqHZKS64o4heDwReD4SsfR7+uNgtYo+JN41kPCcJeIH3aJf04j25i5Dia2s52KmsMPA==}
-    engines: {node: '>=14.20.1'}
-
-  mongodb-memory-server@9.1.1:
-    resolution: {integrity: sha512-ZOHOdb7//sBR2ea1lPHDPRaw8oO2MIfMdF+z82/KnzfNZ6yY6igR48cfG8u+QArKJQFsA392GMMHSevfPWsrRA==}
     engines: {node: '>=14.20.1'}
 
   mongodb-memory-server@9.2.0:
@@ -2459,9 +2438,6 @@ packages:
     resolution: {integrity: sha512-7dSzzRQ++CKnNI/krKnYRV7JKKPUXMEh61soaHKg9mrWEhzFWhFnxPxGl+69cD1Ou63C13NUPCnmIcrvqCuM6w==}
     engines: {node: '>=12'}
 
-  yauzl@2.10.0:
-    resolution: {integrity: sha512-p4a9I6X6nu6IhoGmBqAcbJy1mlC4j27vEPZX9F4L4/vZT3Lyq1VkFHw/V/PUcB9Buo+DG3iHkT0x3Qya58zc3g==}
-
   yauzl@3.1.3:
     resolution: {integrity: sha512-JCCdmlJJWv7L0q/KylOekyRaUrdEoUxWkWVcgorosTROCFWiS9p2NNPE9Yb91ak7b1N5SxAZEliWpspbZccivw==}
     engines: {node: '>=12'}
@@ -3135,20 +3111,6 @@ snapshots:
       write-file-atomic: 5.0.1
       write-yaml-file: 5.0.0
 
-  '@shelf/jest-mongodb@4.3.1(jest-environment-node@29.7.0)(mongodb@6.5.0(socks@2.8.3))':
-    dependencies:
-      debug: 4.3.4
-      jest-environment-node: 29.7.0
-      mongodb: 6.5.0(socks@2.8.3)
-      mongodb-memory-server: 9.1.1
-    transitivePeerDependencies:
-      - '@aws-sdk/credential-providers'
-      - '@mongodb-js/zstd'
-      - kerberos
-      - mongodb-client-encryption
-      - snappy
-      - supports-color
-
   '@sinclair/typebox@0.27.8': {}
 
   '@sinonjs/commons@3.0.1':
@@ -3800,10 +3762,6 @@ snapshots:
   fb-watchman@2.0.2:
     dependencies:
       bser: 2.1.1
-
-  fd-slicer@1.1.0:
-    dependencies:
-      pend: 1.2.0
 
   fetch-blob@2.1.2: {}
 
@@ -4542,28 +4500,6 @@ snapshots:
       '@types/whatwg-url': 11.0.4
       whatwg-url: 13.0.0
 
-  mongodb-memory-server-core@9.1.1:
-    dependencies:
-      async-mutex: 0.4.1
-      camelcase: 6.3.0
-      debug: 4.3.4
-      find-cache-dir: 3.3.2
-      follow-redirects: 1.15.6(debug@4.3.4)
-      https-proxy-agent: 7.0.4
-      mongodb: 5.9.2
-      new-find-package-json: 2.0.0
-      semver: 7.6.0
-      tar-stream: 3.1.7
-      tslib: 2.6.2
-      yauzl: 2.10.0
-    transitivePeerDependencies:
-      - '@aws-sdk/credential-providers'
-      - '@mongodb-js/zstd'
-      - kerberos
-      - mongodb-client-encryption
-      - snappy
-      - supports-color
-
   mongodb-memory-server-core@9.2.0:
     dependencies:
       async-mutex: 0.4.1
@@ -4578,18 +4514,6 @@ snapshots:
       tar-stream: 3.1.7
       tslib: 2.6.2
       yauzl: 3.1.3
-    transitivePeerDependencies:
-      - '@aws-sdk/credential-providers'
-      - '@mongodb-js/zstd'
-      - kerberos
-      - mongodb-client-encryption
-      - snappy
-      - supports-color
-
-  mongodb-memory-server@9.1.1:
-    dependencies:
-      mongodb-memory-server-core: 9.1.1
-      tslib: 2.6.2
     transitivePeerDependencies:
       - '@aws-sdk/credential-providers'
       - '@mongodb-js/zstd'
@@ -5303,11 +5227,6 @@ snapshots:
       string-width: 4.2.3
       y18n: 5.0.8
       yargs-parser: 21.1.1
-
-  yauzl@2.10.0:
-    dependencies:
-      buffer-crc32: 0.2.13
-      fd-slicer: 1.1.0
 
   yauzl@3.1.3:
     dependencies:
