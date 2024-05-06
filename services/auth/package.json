@@ -8,6 +8,7 @@
     "lockfile": "make-dedicated-lockfile",
     "start": "ts-node src/index.ts",
     "test": "jest --verbose",
+    "test:ci": "jest --verbose --ci",
     "test:watch": "jest --watchAll --verbose",
     "typecheck": "tsc --noEmit"
   },

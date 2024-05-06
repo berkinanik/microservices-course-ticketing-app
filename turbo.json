@@ -5,6 +5,9 @@
     "test": {
       "dependsOn": ["typecheck"]
     },
+    "test:ci": {
+      "dependsOn": ["typecheck"]
+    },
     "test:watch": {
       "dependsOn": ["typecheck"],
       "cache": false

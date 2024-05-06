@@ -9,6 +9,7 @@
     "pub:common": "cd packages/common && pnpm pub",
     "update:common": "pnpm --recursive update \"@b.anik/common\" --latest",
     "test": "turbo test",
+    "test:ci": "turbo test:ci",
     "test:watch": "turbo test:watch",
     "typecheck": "turbo typecheck"
   },
