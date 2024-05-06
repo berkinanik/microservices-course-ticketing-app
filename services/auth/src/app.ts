@@ -5,7 +5,13 @@ import cookieSession from 'cookie-session';
 
 import { NotFoundError, currentUserMiddleware, errorHandlerMiddleware } from '@b.anik/common';
 
-import { currentUserRouter, signInRouter, signOutRouter, signUpRouter } from './routes';
+import {
+  currentUserRouter,
+  healthRouter,
+  signInRouter,
+  signOutRouter,
+  signUpRouter,
+} from './routes';
 
 const app = express();
 
@@ -20,6 +26,8 @@ app.use(
     secure: process.env.NODE_ENV !== 'test',
   }),
 );
+
+app.use(healthRouter);
 
 // Middlewares run before route handlers
 app.use(currentUserMiddleware);

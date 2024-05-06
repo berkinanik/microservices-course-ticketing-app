@@ -6,6 +6,7 @@ import cookieSession from 'cookie-session';
 import { NotFoundError, currentUserMiddleware, errorHandlerMiddleware } from '@b.anik/common';
 import {
   deleteTicketRouter,
+  healthRouter,
   newTicketRouter,
   showTicketRouter,
   updateTicketRouter,
@@ -24,6 +25,8 @@ app.use(
     secure: process.env.NODE_ENV !== 'test',
   }),
 );
+
+app.use(healthRouter);
 
 // Middlewares run before route handlers
 app.use(currentUserMiddleware);
