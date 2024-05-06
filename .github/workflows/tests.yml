@@ -4,6 +4,7 @@ on:
   pull_request:
     paths-ignore:
       - 'infra/**'
+  workflow_dispatch: {}
 
 concurrency:
   group: dev-ci-${{ github.event.pull_request.number || github.ref }}
