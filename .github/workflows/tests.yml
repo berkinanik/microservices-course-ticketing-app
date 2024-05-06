@@ -83,7 +83,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: typecheck
+      - name: Run typecheck
         run: pnpm typecheck
 
   run-tests:
@@ -121,5 +121,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: run tests
+      - name: Run tests
         run: pnpm test:ci
