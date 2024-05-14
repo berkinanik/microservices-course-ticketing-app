@@ -35,7 +35,6 @@
     "@types/supertest": "^6.0.2",
     "mongodb-memory-server": "^9.1.8",
     "nodemon": "^3.1.0",
-    "payments": "^2.0.1404",
     "supertest": "^6.3.4",
     "tickets": "^0.2.2",
     "ts-node": "^10.9.2",
