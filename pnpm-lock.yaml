@@ -152,8 +152,8 @@ importers:
   services/auth:
     dependencies:
       '@b.anik/ticketing-common':
-        specifier: ^0.1.0
-        version: 0.1.0
+        specifier: ^0.1.2
+        version: 0.1.2
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -219,8 +219,8 @@ importers:
   services/expiration:
     dependencies:
       '@b.anik/ticketing-common':
-        specifier: ^0.1.0
-        version: 0.1.0
+        specifier: ^0.1.2
+        version: 0.1.2
       bull:
         specifier: ^4.12.2
         version: 4.12.2
@@ -247,8 +247,8 @@ importers:
   services/orders:
     dependencies:
       '@b.anik/ticketing-common':
-        specifier: ^0.1.0
-        version: 0.1.0
+        specifier: ^0.1.2
+        version: 0.1.2
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -317,8 +317,8 @@ importers:
   services/payments:
     dependencies:
       '@b.anik/ticketing-common':
-        specifier: ^0.1.0
-        version: 0.1.0
+        specifier: ^0.1.2
+        version: 0.1.2
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -390,8 +390,8 @@ importers:
   services/tickets:
     dependencies:
       '@b.anik/ticketing-common':
-        specifier: ^0.1.0
-        version: 0.1.0
+        specifier: ^0.1.2
+        version: 0.1.2
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -467,8 +467,8 @@ packages:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
 
-  '@b.anik/ticketing-common@0.1.0':
-    resolution: {integrity: sha512-hjFLtdUWvuFbpRaOBhX1zp4CNIMouSBooMBx4Ww0huevGbuJfvJuu3idfb5LjjCMrfijEf7xRpqbuMFtNhBeag==}
+  '@b.anik/ticketing-common@0.1.2':
+    resolution: {integrity: sha512-GH6xXmNyU7/YZDnRHt3D+G10rFjrhGndOphcESio7da3takEe95nowMbLNVGUj0bRn3tDuU7+eINbMBJSRXbGA==}
 
   '@babel/code-frame@7.24.2':
     resolution: {integrity: sha512-y5+tLQyV8pg3fsiln67BVLD1P13Eg4lh5RW9mF0zUuvLrv9uIQ4MCL+CRT+FTsBlBjcIan6PGsLcBN0m3ClUyQ==}
@@ -4306,7 +4306,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@b.anik/ticketing-common@0.1.0':
+  '@b.anik/ticketing-common@0.1.2':
     dependencies:
       cookie-session: 2.1.0
       express: 4.19.2
