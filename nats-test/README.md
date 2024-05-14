@@ -1,8 +1,8 @@
 # node-nats-streaming demo
 
-to run publisher: `npm run publish`
+to run publisher: `pnpm run publish`
 
-to run listener: `npm run listen`
+to run listener: `pnpm run listen`
 
 ### port forwarding for nats pod in k8s
 
