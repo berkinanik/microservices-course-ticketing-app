@@ -1,0 +1,297 @@
+{
+  "info": {
+    "_postman_id": "f9ceb19c-40a5-49b0-a7b4-1deb99e31bb8",
+    "name": "Microservices Course",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "12649494"
+  },
+  "item": [
+    {
+      "name": "Ticketing App",
+      "item": [
+        {
+          "name": "Auth",
+          "item": [
+            {
+              "name": "Sign Up",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"user@test.com\",\n    \"password\": \"password\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/{{authServicePath}}/sign-up",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["{{authServicePath}}", "sign-up"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Sign In",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"user@test.com\",\n    \"password\": \"password\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/{{authServicePath}}/sign-in",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["{{authServicePath}}", "sign-in"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Sign Out",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/{{authServicePath}}/sign-out",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["{{authServicePath}}", "sign-out"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Current User",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/{{authServicePath}}/current-user",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["{{authServicePath}}", "current-user"]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Tickets",
+          "item": [
+            {
+              "name": "Show Ticket",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/{{ticketsServicePath}}/66356802d3d8d2f1f4af75d9",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["{{ticketsServicePath}}", "66356802d3d8d2f1f4af75d9"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Show Tickets",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/{{ticketsServicePath}}",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["{{ticketsServicePath}}"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "New Ticket",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"title\": \"New Ticket\",\n    \"price\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/{{ticketsServicePath}}",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["{{ticketsServicePath}}"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Ticket",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"title\": \"Updated Title\",\n    \"price\": 123\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/{{ticketsServicePath}}/663586105ee9cdc806e8e9f3",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["{{ticketsServicePath}}", "663586105ee9cdc806e8e9f3"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Ticket",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/{{ticketsServicePath}}/6636dd71ac3ee39488fd1e82",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["{{ticketsServicePath}}", "6636dd71ac3ee39488fd1e82"]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Orders",
+          "item": [
+            {
+              "name": "Show Orders",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/{{ordersServicePath}}",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["{{ordersServicePath}}"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Show Order",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/{{ordersServicePath}}/663029e37bbd317ba0ccfb64",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["{{ordersServicePath}}", "663029e37bbd317ba0ccfb64"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "New Order",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"ticketId\": \"663586105ee9cdc806e8e9f3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/{{ordersServicePath}}",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["{{ordersServicePath}}"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Cancel Order",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/{{ordersServicePath}}/663586db4be52dfe9d7b8146/cancel",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["{{ordersServicePath}}", "663586db4be52dfe9d7b8146", "cancel"]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Payments",
+          "item": [
+            {
+              "name": "Show Payments",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/{{paymentsServicePath}}",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["{{paymentsServicePath}}"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Show Payment",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/{{paymentsServicePath}}/663586f2a33c21be77fd099f",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["{{paymentsServicePath}}", "663586f2a33c21be77fd099f"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "New Payment",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"token\": \"tok_visa\",\n    \"orderId\": \"663586db4be52dfe9d7b8146\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/{{paymentsServicePath}}",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["{{paymentsServicePath}}"]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
