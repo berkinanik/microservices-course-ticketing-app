@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@b.anik/ticketing-common':
-        specifier: ^0.1.0
-        version: 0.1.0
+        specifier: ^0.1.1
+        version: 0.1.1
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -103,8 +103,8 @@ packages:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
 
-  '@b.anik/ticketing-common@0.1.0':
-    resolution: {integrity: sha512-hjFLtdUWvuFbpRaOBhX1zp4CNIMouSBooMBx4Ww0huevGbuJfvJuu3idfb5LjjCMrfijEf7xRpqbuMFtNhBeag==}
+  '@b.anik/ticketing-common@0.1.1':
+    resolution: {integrity: sha512-Vp+zzl0ltEjOCkqRCWFvXWp+bTWXWp6Uv2LVIhXg59V0bccyO1xTPaathhDcn4mxzbZUhvQwxDkbopXZyR9Btw==}
 
   '@babel/code-frame@7.24.2':
     resolution: {integrity: sha512-y5+tLQyV8pg3fsiln67BVLD1P13Eg4lh5RW9mF0zUuvLrv9uIQ4MCL+CRT+FTsBlBjcIan6PGsLcBN0m3ClUyQ==}
@@ -1040,8 +1040,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  electron-to-chromium@1.4.767:
-    resolution: {integrity: sha512-nzzHfmQqBss7CE3apQHkHjXW77+8w3ubGCIoEijKCJebPufREaFETgGXWTkh32t259F3Kcq+R8MZdFdOJROgYw==}
+  electron-to-chromium@1.4.768:
+    resolution: {integrity: sha512-z2U3QcvNuxdkk33YV7R1bVMNq7fL23vq3WfO5BHcqrm4TnDGReouBfYKLEFh5umoK1XACjEwp8mmnhXk2EJigw==}
 
   emittery@0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}
@@ -2450,7 +2450,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@b.anik/ticketing-common@0.1.0':
+  '@b.anik/ticketing-common@0.1.1':
     dependencies:
       cookie-session: 2.1.0
       express: 4.19.2
@@ -3434,7 +3434,7 @@ snapshots:
   browserslist@4.23.0:
     dependencies:
       caniuse-lite: 1.0.30001618
-      electron-to-chromium: 1.4.767
+      electron-to-chromium: 1.4.768
       node-releases: 2.0.14
       update-browserslist-db: 1.0.16(browserslist@4.23.0)
 
@@ -3647,7 +3647,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  electron-to-chromium@1.4.767: {}
+  electron-to-chromium@1.4.768: {}
 
   emittery@0.13.1: {}
 
