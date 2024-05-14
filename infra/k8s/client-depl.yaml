@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: berkinanik/client:latest
+          image: berkinanik/ticketing-client:latest
           env:
             - name: STRIPE_CLIENT_KEY
               valueFrom:

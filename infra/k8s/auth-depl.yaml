@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: berkinanik/auth:latest
+          image: berkinanik/ticketing-auth:latest
           env:
             - name: JWT_KEY
               valueFrom:

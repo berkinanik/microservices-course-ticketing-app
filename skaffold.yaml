@@ -8,7 +8,7 @@ build:
   local:
     push: false
   artifacts:
-    - image: berkinanik/auth
+    - image: berkinanik/ticketing-auth
       context: services/auth
       docker:
         dockerfile: Dockerfile
@@ -16,7 +16,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: berkinanik/tickets
+    - image: berkinanik/ticketing-tickets
       context: services/tickets
       docker:
         dockerfile: Dockerfile
@@ -24,7 +24,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: berkinanik/orders
+    - image: berkinanik/ticketing-orders
       context: services/orders
       docker:
         dockerfile: Dockerfile
@@ -32,7 +32,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: berkinanik/expiration
+    - image: berkinanik/ticketing-expiration
       context: services/expiration
       docker:
         dockerfile: Dockerfile
@@ -40,7 +40,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: berkinanik/payments
+    - image: berkinanik/ticketing-payments
       context: services/payments
       docker:
         dockerfile: Dockerfile
@@ -48,7 +48,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: berkinanik/client
+    - image: berkinanik/ticketing-client
       context: apps/client
       docker:
         dockerfile: Dockerfile
