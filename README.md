@@ -76,8 +76,16 @@ Changes worth mentioning:
 **Clone the repository:**
 
 ```bash
-git clone https://github.com/berkinanik/microservices-course-ticketing-app ticketing-app
+git clone https://github.com/berkinanik/microservices-course-ticketing-app.git ticketing-app
 cd ticketing-app
+```
+
+**Clone the [common module](https://github.com/berkinanik/microservices-course-common-module):**
+
+```bash
+cd packages/common
+git clone https://github.com/berkinanik/microservices-course-common-module.git .
+cd ../..
 ```
 
 **Use Node.js v20**
@@ -207,7 +215,3 @@ The main services in the application are:
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-
-```
-
-```
