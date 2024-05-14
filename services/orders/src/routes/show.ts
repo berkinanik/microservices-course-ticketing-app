@@ -1,6 +1,6 @@
 import express from 'express';
 import { Order } from '../models';
-import { NotAuthorizedError, NotFoundError, requireAuthMiddleware } from '@b.anik/common';
+import { NotAuthorizedError, NotFoundError, requireAuthMiddleware } from '@b.anik/ticketing-common';
 import { param } from 'express-validator';
 import { isValidObjectId } from 'mongoose';
 

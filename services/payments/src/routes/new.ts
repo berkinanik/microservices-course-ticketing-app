@@ -7,7 +7,7 @@ import {
   OrderStatus,
   requireAuthMiddleware,
   validateRequestMiddleware,
-} from '@b.anik/common';
+} from '@b.anik/ticketing-common';
 import { Order, OrderDoc, Payment } from '../models';
 import { stripe } from '../stripe';
 import { PaymentCompletePublisher } from '../events/publishers';

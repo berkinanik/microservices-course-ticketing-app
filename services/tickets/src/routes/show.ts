@@ -1,6 +1,6 @@
 import express from 'express';
 import { Ticket } from '../models';
-import { NotFoundError } from '@b.anik/common';
+import { NotFoundError } from '@b.anik/ticketing-common';
 import { isValidObjectId } from 'mongoose';
 
 const router = express.Router();

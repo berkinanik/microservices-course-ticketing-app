@@ -1,5 +1,5 @@
 import { Message } from 'node-nats-streaming';
-import { ExpirationCompleteEvent, Listener, OrderStatus, Subjects } from '@b.anik/common';
+import { ExpirationCompleteEvent, Listener, OrderStatus, Subjects } from '@b.anik/ticketing-common';
 import { queueGroupName } from './queue-group-name';
 import { Order, OrderDoc } from '../../models';
 import { OrderCancelledPublisher } from '../publishers';

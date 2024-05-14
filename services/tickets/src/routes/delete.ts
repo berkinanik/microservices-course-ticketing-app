@@ -3,7 +3,7 @@ import {
   NotAuthorizedError,
   NotFoundError,
   requireAuthMiddleware,
-} from '@b.anik/common';
+} from '@b.anik/ticketing-common';
 import express from 'express';
 import { isValidObjectId } from 'mongoose';
 import { Ticket, TicketDoc } from '../models';

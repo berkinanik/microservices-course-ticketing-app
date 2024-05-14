@@ -4,7 +4,7 @@ import {
   NotFoundError,
   OrderStatus,
   requireAuthMiddleware,
-} from '@b.anik/common';
+} from '@b.anik/ticketing-common';
 import express from 'express';
 import { param } from 'express-validator';
 import { isValidObjectId } from 'mongoose';

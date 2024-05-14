@@ -1,4 +1,4 @@
-import { TicketCreatedEvent } from '@b.anik/common';
+import { TicketCreatedEvent } from '@b.anik/ticketing-common';
 import { natsWrapper } from '../../../nats-wrapper';
 import { TicketCreatedListener } from '../ticket-created-listener';
 import mongoose from 'mongoose';

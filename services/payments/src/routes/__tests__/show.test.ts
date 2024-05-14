@@ -3,7 +3,7 @@ import { app } from '../../app';
 import { getCookieHeader } from '../../test/utils';
 import mongoose from 'mongoose';
 import { Order, OrderDoc, Payment, PaymentDoc } from '../../models';
-import { OrderStatus } from '@b.anik/common';
+import { OrderStatus } from '@b.anik/ticketing-common';
 
 describe('show', () => {
   const requestAgent = request.agent(app);

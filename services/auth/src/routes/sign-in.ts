@@ -2,7 +2,7 @@ import express from 'express';
 import { body } from 'express-validator';
 import jwt from 'jsonwebtoken';
 
-import { BadRequestError, validateRequestMiddleware } from '@b.anik/common';
+import { BadRequestError, validateRequestMiddleware } from '@b.anik/ticketing-common';
 
 import { User } from '../models';
 import { Password } from '../services';

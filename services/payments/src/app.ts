@@ -3,7 +3,11 @@ import 'express-async-errors';
 import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 
-import { NotFoundError, currentUserMiddleware, errorHandlerMiddleware } from '@b.anik/common';
+import {
+  NotFoundError,
+  currentUserMiddleware,
+  errorHandlerMiddleware,
+} from '@b.anik/ticketing-common';
 import { healthRouter, newPaymentRouter, showPaymentRouter } from './routes';
 
 const app = express();

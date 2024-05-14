@@ -1,4 +1,4 @@
-import { OrderStatus } from '@b.anik/common';
+import { OrderStatus } from '@b.anik/ticketing-common';
 import mongoose, { isValidObjectId } from 'mongoose';
 
 interface OrderAttrs {

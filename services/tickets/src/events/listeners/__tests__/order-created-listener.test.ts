@@ -1,4 +1,4 @@
-import { OrderCreatedEvent, OrderStatus } from '@b.anik/common';
+import { OrderCreatedEvent, OrderStatus } from '@b.anik/ticketing-common';
 import mongoose from 'mongoose';
 import { OrderCreatedListener } from '../order-created-listener';
 import { natsWrapper } from '../../../nats-wrapper';

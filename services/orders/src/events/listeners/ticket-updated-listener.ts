@@ -1,4 +1,4 @@
-import { Listener, Subjects, TicketUpdatedEvent } from '@b.anik/common';
+import { Listener, Subjects, TicketUpdatedEvent } from '@b.anik/ticketing-common';
 import { queueGroupName } from './queue-group-name';
 import { Message } from 'node-nats-streaming';
 import { Ticket } from '../../models';
