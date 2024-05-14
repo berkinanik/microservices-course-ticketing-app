@@ -191,10 +191,10 @@ Then run following command to publish the `common` module under your npm account
 pnpm pub:common
 ```
 
-You can upgrade the package in all services by running the following command in the root directory:
+You can update the common package version in all services by running the following command in the root directory:
 
 ```bash
-pnpm upgrade:common
+pnpm update:common
 ```
 
 _Make sure you also changed the package name in the package.json update:common script in the root._
