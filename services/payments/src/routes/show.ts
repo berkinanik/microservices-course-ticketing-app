@@ -1,4 +1,8 @@
-import { NotFoundError, requireAuthMiddleware, validateRequestMiddleware } from '@b.anik/common';
+import {
+  NotFoundError,
+  requireAuthMiddleware,
+  validateRequestMiddleware,
+} from '@b.anik/ticketing-common';
 import { param } from 'express-validator';
 import express from 'express';
 import { Payment } from '../models';

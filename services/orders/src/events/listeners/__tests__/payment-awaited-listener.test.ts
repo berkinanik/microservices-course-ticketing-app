@@ -1,4 +1,4 @@
-import { OrderStatus, PaymentAwaitedEvent } from '@b.anik/common';
+import { OrderStatus, PaymentAwaitedEvent } from '@b.anik/ticketing-common';
 import { PaymentAwaitedListener } from '../payment-awaited-listener';
 import { natsWrapper } from '../../../nats-wrapper';
 import { Order, OrderDoc, Ticket } from '../../../models';

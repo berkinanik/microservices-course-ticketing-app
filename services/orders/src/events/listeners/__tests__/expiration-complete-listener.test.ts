@@ -1,4 +1,4 @@
-import { ExpirationCompleteEvent, OrderStatus } from '@b.anik/common';
+import { ExpirationCompleteEvent, OrderStatus } from '@b.anik/ticketing-common';
 import { ExpirationCompleteListener } from '../expiration-complete-listener';
 import { Order, OrderDoc, Ticket, TicketDoc } from '../../../models';
 import { natsWrapper } from '../../../nats-wrapper';

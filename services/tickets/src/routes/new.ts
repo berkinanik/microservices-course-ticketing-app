@@ -1,7 +1,7 @@
 import express from 'express';
 import { body } from 'express-validator';
 
-import { requireAuthMiddleware, validateRequestMiddleware } from '@b.anik/common';
+import { requireAuthMiddleware, validateRequestMiddleware } from '@b.anik/ticketing-common';
 import { Ticket } from '../models';
 import { TicketCreatedPublisher } from '../events';
 import { natsWrapper } from '../nats-wrapper';

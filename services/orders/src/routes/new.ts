@@ -2,7 +2,11 @@ import express from 'express';
 import { body } from 'express-validator';
 import { isValidObjectId } from 'mongoose';
 
-import { BadRequestError, requireAuthMiddleware, validateRequestMiddleware } from '@b.anik/common';
+import {
+  BadRequestError,
+  requireAuthMiddleware,
+  validateRequestMiddleware,
+} from '@b.anik/ticketing-common';
 import { Order, Ticket, OrderStatus } from '../models';
 import { OrderCreatedPublisher } from '../events';
 import { natsWrapper } from '../nats-wrapper';

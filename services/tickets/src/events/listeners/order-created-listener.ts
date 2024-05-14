@@ -1,4 +1,4 @@
-import { Listener, OrderCreatedEvent, Subjects } from '@b.anik/common';
+import { Listener, OrderCreatedEvent, Subjects } from '@b.anik/ticketing-common';
 import { Message } from 'node-nats-streaming';
 import { Ticket, TicketDoc } from '../../models';
 import { TicketUpdatedPublisher } from '../publishers';

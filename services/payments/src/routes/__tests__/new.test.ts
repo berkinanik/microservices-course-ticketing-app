@@ -3,7 +3,7 @@ import { app } from '../../app';
 import { getCookieHeader } from '../../test/utils';
 import { Order, OrderDoc, Payment, PaymentDoc } from '../../models';
 import mongoose from 'mongoose';
-import { OrderStatus } from '@b.anik/common';
+import { OrderStatus } from '@b.anik/ticketing-common';
 import { stripe } from '../../stripe';
 import { natsWrapper } from '../../nats-wrapper';
 

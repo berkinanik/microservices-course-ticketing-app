@@ -77,7 +77,7 @@ importers:
     devDependencies:
       '@pnpm/make-dedicated-lockfile':
         specifier: ^0.6.3
-        version: 0.6.4
+        version: 0.6.5
       '@types/jest':
         specifier: ^29.5.12
         version: 29.5.12
@@ -513,16 +513,16 @@ packages:
     resolution: {integrity: sha512-6UFakGqUDhnZVzYCfN+QaG1epxtBVS1M9mb9RzoBuvWxcimBYTT04fdYuyk1Nay8y/TvAVl3AVB/lCziWG0+2w==}
     engines: {node: '>=14.6'}
 
-  '@pnpm/error@6.0.0':
-    resolution: {integrity: sha512-SKtHdV09k9+6jkohv9YuYmKMKNpxknoGjo0c6eN8x2Z3MHW2cuSt1OD/L16eCqdKQL+FUbvULxig0b9X9VK2/g==}
+  '@pnpm/error@6.0.1':
+    resolution: {integrity: sha512-7yjO0RgmWYb4OKgcWC33yD4Z2CxE7Tm7vXX1SmS7GDifDT/bgZZhHeS2xq/+W6y9yhwIrRSA+7AlQL1NM2wIvw==}
     engines: {node: '>=18.12'}
 
   '@pnpm/exec@2.0.0':
     resolution: {integrity: sha512-b5ALfWEOFQprWKntN7MF8XWCyslBk2c8u20GEDcDDQOs6c0HyHlWxX5lig8riQKdS000U6YyS4L4b32NOleXAQ==}
     engines: {node: '>=10'}
 
-  '@pnpm/exportable-manifest@6.0.0':
-    resolution: {integrity: sha512-5RLrRE4ZbIijBIXjTOtTVxTvO+lu0oh+kLi0WO/eEnoV50UfiG9h9VEUx5Sj5RW4cixTbnAQMlsRX1XYeDLTgQ==}
+  '@pnpm/exportable-manifest@6.0.1':
+    resolution: {integrity: sha512-mKUIqSIpmtTclINkdAQaBnq2CiaBYvGxbfnEtKA/ONEBbpAxZqs8ZGNAwA5BIaS7AHBCUjxIcXw+QsX/JkJFLg==}
     engines: {node: '>=18.12'}
 
   '@pnpm/fetch@8.0.0':
@@ -535,8 +535,8 @@ packages:
     resolution: {integrity: sha512-fnsaegb+0q7Ku6AyCmoVtBeCuO8ytB7YMEaGHC+0MGoRsxxa6EVLgi2H4abKr8LLslf5tHJBnOH24DjST3UNfQ==}
     engines: {node: '>=18.12'}
 
-  '@pnpm/find-workspace-dir@7.0.0':
-    resolution: {integrity: sha512-9lv3Cm8FsWJ1qo5jhwwNam4LSy7jojQIJ8nmsoMH2uIa5MKwyhoDafm5DviF81fUfoNUDQ4FuB/zF5/BgiblMg==}
+  '@pnpm/find-workspace-dir@7.0.1':
+    resolution: {integrity: sha512-o1LAFM/5MChI6qBolMBOznzatch01UK3wIgoAE/b779qs1FakksB278nMRTwRY58PZSBT+RxZ2RCMjlxPLeVWw==}
     engines: {node: '>=18.12'}
 
   '@pnpm/git-resolver@9.0.1':
@@ -555,8 +555,8 @@ packages:
     resolution: {integrity: sha512-QzmNiLShTnNyeTHr+cykG5hYjwph0+v49KHV36Dh8uA2rRMWw30qoZMARuxd00SYdoTwT8bIouqqmzi6TWfJHQ==}
     engines: {node: '>=10'}
 
-  '@pnpm/lockfile-file@9.0.4':
-    resolution: {integrity: sha512-WkiHN0UegyBB5hsLxEcbqrwJodcCpT1aA37Ngv/lWXWXWv0F0gL3mas4SltVqdVLV5pl5CoujThrzWOhWKD1kw==}
+  '@pnpm/lockfile-file@9.0.5':
+    resolution: {integrity: sha512-QQFYohFy39FkAQbtDEtqVIzNu5XZhA9aonh/AM/vwvptNcfnajeBuNKfAJepdjWPg/xSBDuU96So29pkPMK8+Q==}
     engines: {node: '>=18.12'}
     peerDependencies:
       '@pnpm/logger': ^5.0.0
@@ -573,8 +573,8 @@ packages:
     resolution: {integrity: sha512-YfcB2QrX+Wx1o6LD1G2Y2fhDhOix/bAY/oAnMpHoNLsKkWIRbt1oKLkIFvxBMzLwAEPqnYWguJrYC+J6i4ywbw==}
     engines: {node: '>=12.17'}
 
-  '@pnpm/make-dedicated-lockfile@0.6.4':
-    resolution: {integrity: sha512-WAbMpwen+DRcAc7TKUS4uLVrSqLzHQW6SMD3L+X7Na/bFc+gJVW/OvgmzwzebFLZw2U+EyCijlRVCIObi8RUVQ==}
+  '@pnpm/make-dedicated-lockfile@0.6.5':
+    resolution: {integrity: sha512-CpIQwtmjrCBLp3yX9Oomadjj3y2HrqCiEhezkmEz8HlvPKWShbfE7meQkIl8LV5n1Zlq6R7Mmjg16LMHvAIXng==}
     engines: {node: '>=18.12'}
     hasBin: true
 
@@ -609,8 +609,8 @@ packages:
   '@pnpm/ramda@0.28.1':
     resolution: {integrity: sha512-zcAG+lvU0fMziNeGXpPyCyCJYp5ZVrPElEE4t14jAmViaihohocZ+dDkcRIyAomox8pQsuZnv1EyHR+pOhmUWw==}
 
-  '@pnpm/read-project-manifest@6.0.0':
-    resolution: {integrity: sha512-X2LYdHErr7BQroRcV0LlilGXMA4SILf0D1adxQmr0CoEAxJThxcCEPIMLZqi9YukUF9oF5vV7qe/mdvI/r79Bw==}
+  '@pnpm/read-project-manifest@6.0.1':
+    resolution: {integrity: sha512-9rVutRLApTQibByEKuUl925areGRPtm7UuubqBJUFVXny+mEqQIX8iUhF8y0Z3yYR16+8eTzOOGvN/DP4QcdSg==}
     engines: {node: '>=18.12'}
 
   '@pnpm/resolver-base@12.0.0':
@@ -3576,7 +3576,7 @@ snapshots:
     dependencies:
       '@pnpm/constants': 6.2.0
 
-  '@pnpm/error@6.0.0':
+  '@pnpm/error@6.0.1':
     dependencies:
       '@pnpm/constants': 8.0.0
 
@@ -3586,10 +3586,10 @@ snapshots:
       command-exists: 1.2.9
       cross-spawn: 7.0.3
 
-  '@pnpm/exportable-manifest@6.0.0':
+  '@pnpm/exportable-manifest@6.0.1':
     dependencies:
-      '@pnpm/error': 6.0.0
-      '@pnpm/read-project-manifest': 6.0.0
+      '@pnpm/error': 6.0.1
+      '@pnpm/read-project-manifest': 6.0.1
       '@pnpm/types': 10.0.0
       p-map-values: 1.0.0
       ramda: '@pnpm/ramda@0.28.1'
@@ -3614,9 +3614,9 @@ snapshots:
     transitivePeerDependencies:
       - domexception
 
-  '@pnpm/find-workspace-dir@7.0.0':
+  '@pnpm/find-workspace-dir@7.0.1':
     dependencies:
-      '@pnpm/error': 6.0.0
+      '@pnpm/error': 6.0.1
       find-up: 5.0.0
 
   '@pnpm/git-resolver@9.0.1(@pnpm/logger@5.0.0)':
@@ -3643,11 +3643,11 @@ snapshots:
     dependencies:
       lru-cache: 6.0.0
 
-  '@pnpm/lockfile-file@9.0.4(@pnpm/logger@5.0.0)':
+  '@pnpm/lockfile-file@9.0.5(@pnpm/logger@5.0.0)':
     dependencies:
       '@pnpm/constants': 8.0.0
       '@pnpm/dependency-path': 4.0.0
-      '@pnpm/error': 6.0.0
+      '@pnpm/error': 6.0.1
       '@pnpm/git-resolver': 9.0.1(@pnpm/logger@5.0.0)
       '@pnpm/git-utils': 2.0.0
       '@pnpm/lockfile-types': 6.0.0
@@ -3688,16 +3688,16 @@ snapshots:
       bole: 5.0.12
       ndjson: 2.0.0
 
-  '@pnpm/make-dedicated-lockfile@0.6.4':
+  '@pnpm/make-dedicated-lockfile@0.6.5':
     dependencies:
-      '@pnpm/error': 6.0.0
+      '@pnpm/error': 6.0.1
       '@pnpm/exec': 2.0.0
-      '@pnpm/exportable-manifest': 6.0.0
-      '@pnpm/find-workspace-dir': 7.0.0
-      '@pnpm/lockfile-file': 9.0.4(@pnpm/logger@5.0.0)
+      '@pnpm/exportable-manifest': 6.0.1
+      '@pnpm/find-workspace-dir': 7.0.1
+      '@pnpm/lockfile-file': 9.0.5(@pnpm/logger@5.0.0)
       '@pnpm/logger': 5.0.0
       '@pnpm/prune-lockfile': 6.0.1
-      '@pnpm/read-project-manifest': 6.0.0
+      '@pnpm/read-project-manifest': 6.0.1
       '@pnpm/types': 10.0.0
       ramda: '@pnpm/ramda@0.28.1'
       rename-overwrite: 5.0.0
@@ -3754,10 +3754,10 @@ snapshots:
 
   '@pnpm/ramda@0.28.1': {}
 
-  '@pnpm/read-project-manifest@6.0.0':
+  '@pnpm/read-project-manifest@6.0.1':
     dependencies:
       '@gwhitney/detect-indent': 7.0.1
-      '@pnpm/error': 6.0.0
+      '@pnpm/error': 6.0.1
       '@pnpm/graceful-fs': 4.0.0
       '@pnpm/text.comments-parser': 3.0.0
       '@pnpm/types': 10.0.0

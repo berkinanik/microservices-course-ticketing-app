@@ -151,9 +151,9 @@ importers:
 
   services/auth:
     dependencies:
-      '@b.anik/common':
-        specifier: ^0.0.46
-        version: 0.0.46
+      '@b.anik/ticketing-common':
+        specifier: ^0.1.0
+        version: 0.1.0
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -221,9 +221,9 @@ importers:
 
   services/expiration:
     dependencies:
-      '@b.anik/common':
-        specifier: ^0.0.46
-        version: 0.0.46
+      '@b.anik/ticketing-common':
+        specifier: ^0.1.0
+        version: 0.1.0
       bull:
         specifier: ^4.12.2
         version: 4.12.2
@@ -249,9 +249,9 @@ importers:
 
   services/orders:
     dependencies:
-      '@b.anik/common':
-        specifier: ^0.0.46
-        version: 0.0.46
+      '@b.anik/ticketing-common':
+        specifier: ^0.1.0
+        version: 0.1.0
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -319,9 +319,9 @@ importers:
 
   services/payments:
     dependencies:
-      '@b.anik/common':
-        specifier: ^0.0.46
-        version: 0.0.46
+      '@b.anik/ticketing-common':
+        specifier: ^0.1.0
+        version: 0.1.0
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -392,9 +392,9 @@ importers:
 
   services/tickets:
     dependencies:
-      '@b.anik/common':
-        specifier: ^0.0.46
-        version: 0.0.46
+      '@b.anik/ticketing-common':
+        specifier: ^0.1.0
+        version: 0.1.0
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -470,8 +470,8 @@ packages:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
 
-  '@b.anik/common@0.0.46':
-    resolution: {integrity: sha512-dGtgyU88pLzbmfrV8dCCG8JaBunI8ObKfHQHwbfIv6FPKuHdVP5DozIwx6duboPLYkdKL7hcgkKT202cPNrhwA==}
+  '@b.anik/ticketing-common@0.1.0':
+    resolution: {integrity: sha512-hjFLtdUWvuFbpRaOBhX1zp4CNIMouSBooMBx4Ww0huevGbuJfvJuu3idfb5LjjCMrfijEf7xRpqbuMFtNhBeag==}
 
   '@babel/code-frame@7.24.2':
     resolution: {integrity: sha512-y5+tLQyV8pg3fsiln67BVLD1P13Eg4lh5RW9mF0zUuvLrv9uIQ4MCL+CRT+FTsBlBjcIan6PGsLcBN0m3ClUyQ==}
@@ -4402,7 +4402,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@b.anik/common@0.0.46':
+  '@b.anik/ticketing-common@0.1.0':
     dependencies:
       cookie-session: 2.1.0
       express: 4.19.2
@@ -4432,7 +4432,7 @@ snapshots:
       '@babel/traverse': 7.24.5
       '@babel/types': 7.24.5
       convert-source-map: 2.0.0
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
       gensync: 1.0.0-beta.2
       json5: 2.2.3
       semver: 6.3.1
@@ -4603,7 +4603,7 @@ snapshots:
       '@babel/helper-split-export-declaration': 7.24.5
       '@babel/parser': 7.24.5
       '@babel/types': 7.24.5
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
@@ -5518,7 +5518,7 @@ snapshots:
 
   agent-base@6.0.2:
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -5530,7 +5530,7 @@ snapshots:
 
   agentkeepalive@4.2.1:
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
       depd: 1.1.2
       humanize-ms: 1.2.1
     transitivePeerDependencies:
@@ -6076,10 +6076,6 @@ snapshots:
   debug@3.2.7:
     dependencies:
       ms: 2.1.3
-
-  debug@4.3.4:
-    dependencies:
-      ms: 2.1.2
 
   debug@4.3.4(supports-color@5.5.0):
     dependencies:
@@ -6886,7 +6882,7 @@ snapshots:
     dependencies:
       '@tootallnate/once': 2.0.0
       agent-base: 6.0.2
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -6899,7 +6895,7 @@ snapshots:
   https-proxy-agent@5.0.1:
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -7118,7 +7114,7 @@ snapshots:
 
   istanbul-lib-source-maps@4.0.1:
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
       istanbul-lib-coverage: 3.2.2
       source-map: 0.6.1
     transitivePeerDependencies:
@@ -8431,7 +8427,7 @@ snapshots:
   socks-proxy-agent@6.1.1:
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
       socks: 2.8.3
     transitivePeerDependencies:
       - supports-color

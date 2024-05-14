@@ -1,4 +1,4 @@
-import { OrderStatus, PaymentCompleteEvent } from '@b.anik/common';
+import { OrderStatus, PaymentCompleteEvent } from '@b.anik/ticketing-common';
 import { PaymentCompleteListener } from '../payment-complete-listener';
 import { natsWrapper } from '../../../nats-wrapper';
 import mongoose from 'mongoose';

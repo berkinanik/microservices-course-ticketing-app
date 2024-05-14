@@ -1,4 +1,4 @@
-import { Listener, OrderUpdatedEvent, Subjects } from '@b.anik/common';
+import { Listener, OrderUpdatedEvent, Subjects } from '@b.anik/ticketing-common';
 import { queueGroupName } from './queue-group-name';
 import { Order, OrderDoc } from '../../models';
 

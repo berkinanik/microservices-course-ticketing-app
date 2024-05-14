@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { requireAuthMiddleware } from '@b.anik/common';
+import { requireAuthMiddleware } from '@b.anik/ticketing-common';
 
 const router = express.Router();
 

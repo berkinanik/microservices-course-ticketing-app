@@ -1,4 +1,4 @@
-import { OrderStatus, OrderUpdatedEvent } from '@b.anik/common';
+import { OrderStatus, OrderUpdatedEvent } from '@b.anik/ticketing-common';
 import { OrderUpdatedListener } from '../order-updated-listener';
 import { natsWrapper } from '../../../nats-wrapper';
 import { Order, OrderDoc } from '../../../models';

@@ -7,7 +7,7 @@
     "format": "prettier --write .",
     "lockfile": "pnpm i && turbo lockfile",
     "pub:common": "cd packages/common && pnpm pub",
-    "update:common": "pnpm --recursive update \"@b.anik/common\" --latest",
+    "update:common": "pnpm --recursive update \"@b.anik/ticketing-common\" --latest",
     "test": "turbo test",
     "test:ci": "turbo test:ci",
     "test:watch": "turbo test:watch",
