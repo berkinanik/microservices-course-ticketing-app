@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: payments
-          image: berkinanik/payments:latest
+          image: berkinanik/ticketing-payments:latest
           env:
             - name: JWT_KEY
               valueFrom:
