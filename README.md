@@ -9,6 +9,7 @@ Changes worth mentioning:
 - Updated the libraries and tools to the latest versions.
   - Built on Node.js v20, used React v18 and Next.js v14 with App Router.
 - Up-to-date approach for running tests in GitHub Actions using pnpm cache and manually cached mongodb binaries.
+- Health check endpoints for each service and client for Kubernetes liveness checks to ensure the services are running properly.
 
 ## Table of Contents
 
@@ -55,8 +56,8 @@ Changes worth mentioning:
 - Docker & Kubernetes
   - [Docker Desktop](https://www.docker.com/products/docker-desktop/) is the easiest to install both
   - Enable Kubernetes in Docker Desktop settings
-- Nginx Ingress Controller & Skaffold
-  - Install [Nginx Ingress](https://kubernetes.github.io/ingress-nginx/deploy/#quick-start:~:text=manifest%2C%20you%20can-,run%20the%20following,-command%20instead%3A)
+- Ingress Nginx Controller & Skaffold
+  - Install [Ingress Nginx](https://kubernetes.github.io/ingress-nginx/deploy/#quick-start:~:text=manifest%2C%20you%20can-,run%20the%20following,-command%20instead%3A)
     ```bash
     kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.1/deploy/static/provider/cloud/deploy.yaml
     ```
